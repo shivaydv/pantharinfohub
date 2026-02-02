@@ -1,8 +1,30 @@
-import React from 'react'
+"use client"
+import Preloader from "@/components/others/Preloader";
+import { AnimatePresence } from "motion/react";
+import { useEffect, useState } from "react"
 
 const page = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    (
+      async () => {
+        setTimeout(() => {
+          setIsLoading(false);
+          document.body.style.cursor = 'default'
+          window.scrollTo(0, 0);
+        }, 2000)
+      }
+    )()   
+  }, [])
   return (
-    <div>page</div>
+    <>
+      <AnimatePresence mode='wait'>
+        {isLoading && <Preloader />}
+      </AnimatePresence>
+      <div>
+        hi
+      </div>
+    </>
   )
 }
 
