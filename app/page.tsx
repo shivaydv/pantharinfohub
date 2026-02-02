@@ -7,6 +7,10 @@ import { Header } from "@/components/others/Header";
 import HeroCard from "@/components/sections/HeroCard";
 import Achievement from "@/components/sections/Achievement";
 import AboutSection from "@/components/sections/AboutSection";
+import FounderSection from "@/components/sections/FounderSection";
+import ParallaxStrips from "@/components/sections/Strips";
+import CardSection from "@/components/sections/CardsSection";
+import Footer from "@/components/others/Footer";
 
 const page = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +40,10 @@ const page = () => {
       <HeroCard />
       <Achievement />
       <AboutSection />
-      <div className="h-screen   bg-slate-50"></div>
+      <FounderSection />
+      <ParallaxStrips />
+      <CardSection />
+      <Footer />
     </main>
   )
 }

@@ -208,8 +208,9 @@ export default function AboutSection() {
                                         height: orbit.radius * 2,
                                     }}
                                 >
+                                    {/* Primary Orange Orb */}
                                     <motion.div
-                                        className="absolute top-0 left-1/2 -ml-1.5 -mt-1.5"
+                                        className="absolute inset-0"
                                         animate={{ rotate: 360 }}
                                         transition={{
                                             duration: orbit.duration,
@@ -217,25 +218,21 @@ export default function AboutSection() {
                                             ease: "linear",
                                             delay: orbit.delay
                                         }}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            transformOrigin: '50% 50%',
-                                            position: 'absolute'
-                                        }}
+                                        style={{ transformOrigin: '50% 50%' }}
                                     >
                                         <div
-                                            className="bg-orange-500 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.4)]"
+                                            className="absolute top-0 left-1/2 bg-orange-500 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.4)]"
                                             style={{
                                                 width: orbit.size,
                                                 height: orbit.size,
-                                                transform: `translateY(${orbit.size / 2}px)`
+                                                transform: 'translate(-50%, -50%)'
                                             }}
                                         />
                                     </motion.div>
 
+                                    {/* Secondary Slate Orb (Counter-rotating) */}
                                     <motion.div
-                                        className="absolute top-0 left-1/2 -ml-1.5 -mt-1.5"
+                                        className="absolute inset-0"
                                         animate={{ rotate: -360 }}
                                         transition={{
                                             duration: orbit.duration * 1.5,
@@ -243,19 +240,14 @@ export default function AboutSection() {
                                             ease: "linear",
                                             delay: orbit.delay - 15
                                         }}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            transformOrigin: '50% 50%',
-                                            position: 'absolute'
-                                        }}
+                                        style={{ transformOrigin: '50% 50%' }}
                                     >
                                         <div
-                                            className="bg-slate-200 rounded-full"
+                                            className="absolute top-0 left-1/2 bg-slate-200 rounded-full"
                                             style={{
                                                 width: orbit.size - 2,
                                                 height: orbit.size - 2,
-                                                transform: `translateY(${orbit.size / 2}px)`
+                                                transform: 'translate(-50%, -50%)'
                                             }}
                                         />
                                     </motion.div>

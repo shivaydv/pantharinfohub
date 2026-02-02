@@ -56,9 +56,7 @@ const AnimatedText = ({ text, className = "", delay = 0, startAnimation }: Anima
 const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
     return (
         <section className="relative min-h-[90vh] flex items-center justify-center pt-24 sm:pt-32 lg:pt-40 pb-20 px-6 overflow-hidden">
-            {/* Background Light Effect */}
-            <div className="absolute top-0 inset-x-0 h-[500px] bg-linear-to-b from-blue-50/15 via-transparent to-transparent -z-10" />
-
+  
             <div className="max-w-7xl w-full flex flex-col items-center">
                 {/* Trusted by founders */}
                 <motion.div
@@ -95,11 +93,27 @@ const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
 
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, rotate: -2 }}
-                            animate={startAnimation ? { scale: 1, opacity: 1, rotate: 0 } : {}}
-                            transition={{ delay: 0.4, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                            className="hidden lg:flex w-24 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/10 border border-white"
+                            animate={startAnimation ? {
+                                scale: 1,
+                                opacity: 1,
+                                rotate: 0,
+                                y: [0, -10, 0],
+                            } : {}}
+                            whileHover={{ scale: 1.05, rotate: -1, zIndex: 10 }}
+                            transition={{
+                                delay: 0.4,
+                                duration: 0.8,
+                                ease: [0.32, 0.72, 0, 1],
+                                y: {
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 1.2
+                                }
+                            }}
+                            className="hidden lg:flex w-24 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/10 border border-white cursor-pointer group/img"
                         >
-                            <Image src="/service/design.png" alt="Engineering" fill className="object-cover" />
+                            <Image src="/service/design.png" alt="Engineering" fill className="object-cover transition-transform duration-700 group-hover/img:scale-110" />
                         </motion.div>
 
                         <AnimatedText text="the" startAnimation={startAnimation} delay={0.3} />
@@ -109,11 +123,27 @@ const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
 
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, rotate: 2 }}
-                            animate={startAnimation ? { scale: 1, opacity: 1, rotate: 0 } : {}}
-                            transition={{ delay: 0.6, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                            className="hidden lg:flex w-28 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-slate-500/10 border border-white"
+                            animate={startAnimation ? {
+                                scale: 1,
+                                opacity: 1,
+                                rotate: 0,
+                                y: [0, 10, 0],
+                            } : {}}
+                            whileHover={{ scale: 1.05, rotate: 1, zIndex: 10 }}
+                            transition={{
+                                delay: 0.6,
+                                duration: 0.8,
+                                ease: [0.32, 0.72, 0, 1],
+                                y: {
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 1.4
+                                }
+                            }}
+                            className="hidden lg:flex w-28 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-slate-500/10 border border-white cursor-pointer group/img"
                         >
-                            <Image src="/service/dev.jpg" alt="Business" fill className="object-cover" />
+                            <Image src="/service/dev.jpg" alt="Business" fill className="object-cover transition-transform duration-700 group-hover/img:scale-110" />
                         </motion.div>
 
                         <AnimatedText text="with" startAnimation={startAnimation} delay={0.65} />
@@ -122,11 +152,26 @@ const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
 
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, y: 5 }}
-                            animate={startAnimation ? { scale: 1, opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.8, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                            className="hidden lg:flex w-24 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/10 border border-white"
+                            animate={startAnimation ? {
+                                scale: 1,
+                                opacity: 1,
+                                y: [-10, 0, -10],
+                            } : {}}
+                            whileHover={{ scale: 1.05, rotate: -2, zIndex: 10 }}
+                            transition={{
+                                delay: 0.8,
+                                duration: 0.8,
+                                ease: [0.32, 0.72, 0, 1],
+                                y: {
+                                    duration: 4.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 1.6
+                                }
+                            }}
+                            className="hidden lg:flex w-24 h-16 relative shrink-0 rounded-2xl overflow-hidden shadow-2xl shadow-orange-500/10 border border-white cursor-pointer group/img"
                         >
-                            <Image src="/service/discovery.png" alt="AI" fill className="object-cover" />
+                            <Image src="/service/discovery.png" alt="AI" fill className="object-cover transition-transform duration-700 group-hover/img:scale-110" />
                         </motion.div>
 
                         <AnimatedText text="&" startAnimation={startAnimation} delay={0.85} />
