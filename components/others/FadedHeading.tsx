@@ -22,8 +22,8 @@ export default function FadedHeading({
       <h2
         className={`
           relative
-          text-3xl
-          sm:text-6xl
+          text-5xl
+          sm:text-7xl
           md:text-8xl
           lg:text-[12rem]
           font-bold

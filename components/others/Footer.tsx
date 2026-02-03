@@ -65,13 +65,13 @@ const Footer = () => {
 
     return (
         <div className="w-full p-2 pb-2">
-            <footer className="w-full h-[98vh] rounded-xl text-white relative bg-[#090909] overflow-hidden group">
+            <footer className="w-full min-h-[90vh] lg:h-[98vh] rounded-xl text-white relative bg-[#090909] overflow-hidden group flex flex-col justify-between">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
                     <div
-                        className="absolute inset-0 bg-[url('/assets/footer-bg.avif')] bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                        className="absolute inset-0 bg-[url('/assets/footer-bg.avif')] bg-cover bg-center opacity-40 lg:opacity-60 group-hover:scale-105 transition-transform duration-1000"
                     />
-                    <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black" />
+                    <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/20 to-black" />
                 </div>
 
                 <motion.div
@@ -79,12 +79,12 @@ const Footer = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="container mx-auto h-full flex flex-col justify-between py-20 px-8 sm:px-12 md:px-20 relative z-10"
+                    className="container mx-auto grow flex flex-col justify-between py-12 px-6 sm:px-12 md:px-20 relative z-10"
                 >
                     {/* Top Section: Branding and Minimal Fillers */}
                     <div className="flex flex-col lg:flex-row justify-between items-start gap-12 sm:gap-16 pt-10">
-                        <motion.div variants={itemVariants} className="max-w-md">
-                            <div className="text-3xl font-bold font-cal-sans mb-10 tracking-tighter">
+                        <motion.div variants={itemVariants} className="max-w-md w-full">
+                            <div className="text-3xl font-bold font-cal-sans mb-8 tracking-tighter">
                                 PANTHAR<span className="text-orange-500">.</span>
                             </div>
                             <div className="space-y-6">
@@ -109,16 +109,16 @@ const Footer = () => {
 
                         <motion.div
                             variants={itemVariants}
-                            className="flex flex-col items-end gap-16 lg:mt-10"
+                            className="flex flex-col items-start lg:items-end gap-12 lg:gap-16 lg:mt-10"
                         >
-                            <div className="text-right">
+                            <div className="text-left lg:text-right">
                                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500 mb-8">Navigation</h3>
-                                <ul className="space-y-4">
+                                <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-8 gap-y-4">
                                     {[...footerLinks.services.links, ...footerLinks.company.links].slice(0, 6).map((link, i) => (
                                         <li key={i}>
                                             <Link
                                                 href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-xl font-cal-sans"
+                                                className="text-gray-400 hover:text-white transition-colors text-lg lg:text-xl font-cal-sans"
                                             >
                                                 {link.label}
                                             </Link>
@@ -126,45 +126,17 @@ const Footer = () => {
                                     ))}
                                 </ul>
                             </div>
-
-                    
                         </motion.div>
                     </div>
-
-                    {/* Bottom Bar */}
-                    {/* <motion.div
-                        variants={itemVariants}
-                        className="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-white/10"
-                    >
-                        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12">
-                            <p className="text-gray-500 text-sm font-medium">
-                                © {new Date().getFullYear()} Panthar. All rights reserved.
-                            </p>
-                            <div className="flex gap-6 text-xs uppercase tracking-widest text-gray-500">
-                                <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-                                <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-                            </div>
-                        </div>
-
-                        <button
-                            onClick={scrollToTop}
-                            className="flex items-center gap-3 text-white font-bold group/top hover:text-orange-500 transition-colors"
-                        >
-                            <span className="uppercase tracking-[0.2em] text-[10px]">Back to top</span>
-                            <div className="p-3 rounded-full border border-white/10 group-hover:border-orange-500 transition-colors">
-                                <ArrowUp className="size-4" />
-                            </div>
-                        </button>
-                    </motion.div> */}
                 </motion.div>
 
                 {/* Massive Watermark - Centered & Responsive */}
-                <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center pointer-events-none select-none z-0 overflow-hidden">
+                <div className="relative pointer-events-none select-none z-0 overflow-hidden flex items-end justify-center h-20 md:h-32 lg:h-auto mt-auto">
                     <motion.h2
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 0.1, y: 0 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="text-[22vw] font-black font-cal-sans text-white leading-none translate-y-[20%] whitespace-nowrap"
+                        className="text-[25vw] sm:text-[22vw] font-black font-cal-sans text-white leading-none translate-y-[20%] whitespace-nowrap"
                     >
                         PANTHAR
                     </motion.h2>

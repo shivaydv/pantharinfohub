@@ -15,8 +15,8 @@ export default function FounderSection() {
     return (
         <section className="w-full py-20 px-6 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                <FadedHeading title="Meet Abhay">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <FadedHeading title="Meet Abhay" overlapClass="mt-4 md:-mt-8 lg:-mt-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                         {/* Left Side - Founder Image Card */}
                         <div className="relative flex justify-center items-center">
                             <motion.div
@@ -28,7 +28,7 @@ export default function FounderSection() {
                                     ease: [0.32, 0.72, 0, 1],
                                     delay: 0.1
                                 }}
-                                className="relative rounded-[2.5rem] overflow-hidden aspect-[3/4] max-h-[30rem] w-[min(100%,22.5rem)] group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] lg:translate-x-16"
+                                className="relative rounded-[2.5rem] overflow-hidden aspect-3/4 max-h-120 w-[min(100%,22.5rem)] group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] lg:translate-x-16"
                             >
                                 {/* Founder Image */}
                                 <div className="relative h-full w-full">
