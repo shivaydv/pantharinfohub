@@ -51,7 +51,7 @@ const cards = [
     },
 ];
 
-export default function CardSection() {
+export default function CardSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
@@ -68,21 +68,23 @@ export default function CardSection() {
     return (
         <div ref={container} className="relative h-[400vh] bg-white pt-6 pb-0 md:pt-16 md:pb-0">
             {/* Large Section Heading at the top (not sticky) */}
-            <motion.div
-                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-2 md:mb-12 transform transition-all duration-700"
-            >
-                <FadedHeading title="OUR WORK" theme="light" overlapClass="mt-2 md:-mt-8 lg:-mt-12">
-                    <div className="relative w-full max-w-7xl mx-auto px-6 text-center">
-                        <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter font-cal-sans">
-                            Our <span className="text-orange-500">Works.</span>
-                        </h2>
-                    </div>
-                </FadedHeading>
-            </motion.div>
+            {!hideHeader && (
+                <motion.div
+                    initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="mb-2 md:mb-12 transform transition-all duration-700"
+                >
+                    <FadedHeading title="OUR WORK" theme="light" overlapClass="mt-2 md:-mt-8 lg:-mt-12">
+                        <div className="relative w-full max-w-7xl mx-auto px-6 text-center">
+                            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter font-cal-sans">
+                                Our <span className="text-orange-500">Works.</span>
+                            </h2>
+                        </div>
+                    </FadedHeading>
+                </motion.div>
+            )}
 
             <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
                 {/* Cards Container - Centered */}

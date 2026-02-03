@@ -68,7 +68,7 @@ export default function AboutSection() {
     ];
 
     return (
-        <section className="relative py-20 sm:py-28 lg:py-36 px-6 bg-white overflow-hidden" ref={sectionRef}>
+        <section id="about" className="relative py-20 sm:py-28 lg:py-36 px-6 bg-white overflow-hidden" ref={sectionRef}>
             {/* Background Grain/Grid for texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[24px_24px]" />
 

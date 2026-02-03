@@ -12,7 +12,7 @@ const menuItems = [
   { name: "Projects", href: "/projects", description: "Our latest case studies" },
   { name: "Services", href: "/services", description: "Expert AI & Software solutions" },
   { name: "Team", href: "/team", description: "The team behind Panthar" },
-  { name: "About", href: "/about", description: "About Panthar" },
+  { name: "About", href: "/#about", description: "About Panthar" },
 ];
 
 const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
@@ -115,8 +115,8 @@ const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
                 <div className="inline-flex h-9 translate-y-0 items-center justify-center px-6 bg-black text-white transition duration-500 group-hover:-translate-y-[150%]">
                   Contact Us
                 </div>
-                <div className="absolute inline-flex h-9 w-full translate-y-full items-center justify-center text-black transition duration-500 group-hover:translate-y-0">
-                  <span className="absolute h-full w-full translate-y-full skew-y-12 scale-y-0 bg-white transition duration-500 group-hover:translate-y-0 group-hover:scale-150"></span>
+                <div className="absolute inline-flex h-9 w-full translate-y-full items-center justify-center text-white transition duration-500 group-hover:translate-y-0">
+                  <span className="absolute h-full w-full translate-y-full skew-y-12 scale-y-0 bg-orange-500 transition duration-500 group-hover:translate-y-0 group-hover:scale-150"></span>
                   <span className="z-10">Let&apos;s Talk</span>
                 </div>
               </Link>

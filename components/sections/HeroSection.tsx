@@ -53,7 +53,7 @@ const AnimatedText = ({ text, className = "", delay = 0, startAnimation }: Anima
     );
 };
 
-const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
+const HeroSection = ({ startAnimation=true }: { startAnimation?: boolean }) => {
     return (
         <section className="relative min-h-[90vh] flex items-center justify-center pt-24 sm:pt-32 lg:pt-40 pb-20 px-6 overflow-hidden">
   
@@ -205,7 +205,7 @@ const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
                     }}
                 >
                     {/* Primary "Explorer" Button */}
-                    <button className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-slate-950 text-white font-bold rounded-[1.1rem] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4)] active:scale-95">
+                    <button className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-orange-500 text-white font-bold rounded-[1.1rem] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4)] active:scale-95">
                         {/* Shimmer Sweep */}
                         <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
@@ -219,7 +219,7 @@ const HeroSection = ({ startAnimation }: { startAnimation: boolean }) => {
                     </button>
 
                     {/* Secondary "Gallery" Button */}
-                    <button className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-slate-900 border border-slate-200 font-bold rounded-[1.1rem] transition-all duration-500 hover:border-slate-900 active:scale-95 shadow-sm overflow-hidden">
+                    <button className="group relative inline-flex items-center justify-center px-8 py-3.5 bg-white text-slate-900 border border-slate-200 font-bold rounded-[1.1rem] transition-all duration-500 hover:border-orange-500 active:scale-95 shadow-sm overflow-hidden">
                         {/* Soft Hover Fill */}
                         <div className="absolute inset-0 bg-slate-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

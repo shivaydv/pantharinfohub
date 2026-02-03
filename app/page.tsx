@@ -11,32 +11,34 @@ import FounderSection from "@/components/sections/FounderSection";
 import ParallaxStrips from "@/components/sections/Strips";
 import CardSection from "@/components/sections/CardsSection";
 import Footer from "@/components/others/Footer";
+import TestimonialsEditorial from "@/components/sections/Testimonial";
 
 const page = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [startMainContent, setStartMainContent] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [startMainContent, setStartMainContent] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        setStartMainContent(true);
-        document.body.style.cursor = "default";
-        window.scrollTo(0, 0);
-      }, 2000);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //       setStartMainContent(true);
+  //       document.body.style.cursor = "default";
+  //       window.scrollTo(0, 0);
+  //     }, 2000);
+  //   })();
+  // }, []);
 
   return (
     <main className="relative min-h-screen bg-white font-sans">
-      <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
+      {/* <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence> */}
 
       {/* <Header startAnimation={startMainContent} /> */}
-      <HeroSection startAnimation={startMainContent} />
+      <HeroSection  />
       <HeroCard />
       <Achievement />
       <AboutSection />
       <FounderSection />
+      <TestimonialsEditorial/>
       <ParallaxStrips />
       <CardSection />
       {/* <Footer /> */}
