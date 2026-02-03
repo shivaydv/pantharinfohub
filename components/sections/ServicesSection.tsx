@@ -27,10 +27,10 @@ const ServicesSection = () => {
 
   return (
     <section ref={targetRef} className="relative h-[450vh] bg-white">
-      <div className="sticky top-0 flex flex-col h-screen overflow-hidden justify-center pt-28 pb-12">
+      <div className="sticky top-0 flex flex-col h-screen overflow-hidden justify-center pt-16 md:pt-28 pb-12">
 
         {/* Header Section */}
-        <div className="mb-10 md:mb-16">
+        <div className="mb-6 md:mb-16">
           <div className="container mx-auto px-6 md:px-24">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
               <motion.div
@@ -45,7 +45,7 @@ const ServicesSection = () => {
                     hidden: { y: "100%" },
                     visible: { y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
                   }}
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold text-black tracking-tighter font-cal-sans text-left leading-none"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-black tracking-tighter font-cal-sans text-left leading-[1.1] md:leading-none"
                 >
                   Elegant <span className="text-orange-500">Solutions</span>
                   <br /> For Bold Brands.

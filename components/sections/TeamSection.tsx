@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { Teams, users } from "@/lib/data";
-import { Sparkle } from "lucide-react";
+import { Sparkle, ArrowUpRight } from "lucide-react";
 
 const TeamSection = () => {
   // Combine users (founders) and Teams for a full list
@@ -13,59 +13,64 @@ const TeamSection = () => {
     ...Teams.map((t) => ({ ...t, isFounder: false })),
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
+
   return (
-    <section className="bg-white min-h-screen pt-32 pb-20 px-6 md:px-16 lg:px-24">
-      <div className="max-w-[1400px] mx-auto">
-        {/* Top Badges */}
+    <section className="bg-white min-h-screen pt-20 md:pt-32 pb-16 md:pb-24 px-6 md:px-16">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+        className="max-w-[1400px] mx-auto"
+      >
+        {/* Top Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-          className="flex items-center gap-3 mb-8"
+          variants={itemVariants}
+          className="flex items-center gap-3 mb-10"
         >
-          <Sparkle className="size-4 text-slate-400 fill-slate-400" />
-          <div className="flex gap-2">
-            {["OUR", "CREATIVE", "TEAM"].map((word) => (
-              <span
-                key={word}
-                className="px-4 py-1.5 border border-slate-100 rounded-full text-[10px] font-bold tracking-widest text-slate-400 uppercase"
-              >
-                {word}
-              </span>
-            ))}
-          </div>
+          <Sparkle className="size-4 text-orange-500 fill-orange-500" />
+          <span className="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase">
+            MEET THE VISIONARIES
+          </span>
         </motion.div>
 
-        {/* Main Title - Refined */}
+        {/* Header Content */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-          className="text-4xl md:text-[80px] font-normal tracking-[-0.04em] text-slate-900 leading-[0.9] mb-12 max-w-3xl"
+          variants={itemVariants}
+          className="text-4xl md:text-[80px] font-normal tracking-[-0.04em] text-black leading-[0.9] mb-12 max-w-3xl"
         >
           A TEAM OF <br />
-          <span className="text-slate-300">DIGITAL EXPERTS.</span>
+          <span className="text-orange-500">DIGITAL EXPERTS.</span>
         </motion.h2>
 
         {/* Description Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-4 border-t border-slate-100 pt-16 mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-            className="md:col-span-4"
-          >
-            <p className="text-sm font-bold text-slate-900 uppercase tracking-tight leading-snug lg:max-w-xs">
+          <motion.div variants={itemVariants} className="md:col-span-4">
+            <p className="text-sm font-bold text-black uppercase tracking-tight leading-snug lg:max-w-xs">
               WE ARE A COLLECTIVE OF THINKERS, DESIGNERS AND ENGINEERS DEDICATED TO EXCELLENCE.
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
-            className="md:col-span-8"
-          >
+          <motion.div variants={itemVariants} className="md:col-span-8">
             <p className="text-slate-500 text-lg md:text-xl font-normal leading-relaxed text-pretty max-w-2xl">
               From our humble beginnings to becoming a leading digital hub, our mission remains the
               same: empowering businesses through uncompromising innovation and precision.
@@ -73,13 +78,13 @@ const TeamSection = () => {
           </motion.div>
         </div>
 
-        {/* Team Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Team Cards Grid - Changed to 2 columns on mobile, 4 on large screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10">
           {fullTeam.map((member, index) => (
             <TeamMemberCard key={index} member={member} index={index} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
@@ -87,66 +92,77 @@ const TeamSection = () => {
 const TeamMemberCard = ({ member, index }: { member: any; index: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.32, 0.72, 0, 1] }}
-      className="group relative flex flex-col"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 1,
+            delay: (index % 4) * 0.1,
+            ease: [0.16, 1, 0.3, 1] as const
+          }
+        },
+      }}
+      className="group flex flex-col"
     >
-      {/* Image Container */}
-      <div className="relative aspect-[10/14] bg-slate-50 rounded-[2.5rem] overflow-hidden group transition-all duration-700 shadow-[0_0_0_1px_rgba(0,0,0,0.03)]">
+      {/* Image Container - Subtle height reduce on hover */}
+      <div className="relative aspect-10/11 md:aspect-10/12 bg-gray-50 rounded-2xl md:rounded-3xl overflow-hidden transition-all duration-700 ease-[0.16,1,0.3,1] md:group-hover:aspect-10/11 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
         <Image
           src={member.icon}
           alt={member.name}
           fill
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out group-hover:scale-110"
+          className="object-cover transition-colors duration-500"
         />
 
-        {/* Info Overlay (links show) */}
-        <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.32, 0.72, 0, 1] z-20">
-          <div className="bg-white/90 backdrop-blur-md p-5 rounded-[2rem] shadow-2xl flex flex-col items-center gap-4 border border-white/20">
-            <div className="flex gap-3">
-              {member.socials?.map((social: any, i: number) => (
-                <a
-                  key={i}
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 bg-slate-900 rounded-full text-white hover:bg-orange-500 transition-all duration-500"
-                >
-                  {/* We handle Lucide icons here if passed as components or strings */}
-                  {React.isValidElement(social.icon) ? social.icon : null}
-                </a>
-              ))}
-            </div>
-            <p className="text-[9px] font-bold tracking-widest text-slate-400 uppercase">
-              Connect with {member.name.split(" ")[0]}
-            </p>
+        {/* Founder Badge (Inside Image) */}
+        {member.isFounder && (
+          <div className="absolute top-4 right-4 z-20">
+            <span className="px-3 py-1 rounded-full bg-orange-500 text-white text-[8px] font-black tracking-widest uppercase">
+              Founder
+            </span>
           </div>
-        </div>
-
-        {/* Darkened Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        )}
       </div>
 
-      {/* Footer info (outside image) */}
-      <div className="mt-6 flex justify-between items-start px-2">
-        <div>
-          <h4 className="text-xl md:text-2xl font-normal text-slate-900 tracking-[-0.03em]">
+      {/* Footer info (outside card) */}
+      <div className="mt-5 flex flex-col px-1">
+        <div className="flex justify-between items-start mb-0.5">
+          <h4 className="text-lg md:text-xl font-medium text-black tracking-tight">
             {member.name}
           </h4>
-          <p className="text-slate-400 text-[10px] font-bold tracking-widest uppercase mt-1">
-            {member.role}
-          </p>
-        </div>
-        {member.isFounder && (
-          <span className="text-[9px] font-bold tracking-[0.2em] text-orange-600 border border-orange-100 px-3 py-1 rounded-full bg-orange-50/50">
-            FOUNDER
+          <span className="text-[10px] font-bold text-orange-500 md:text-gray-200 md:group-hover:text-orange-500 transition-colors duration-500">
+            _{index < 9 ? `0${index + 1}` : index + 1}
           </span>
-        )}
+        </div>
+
+        <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase mb-3">
+          {member.role}
+        </p>
+
+        {/* Socials - Visible on mobile, hover on desktop */}
+        <div className="flex md:justify-end gap-2 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
+          {member.socials?.map((social: any, i: number) => (
+            <a
+              key={i}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="size-7 rounded-full bg-black flex items-center justify-center text-white hover:bg-orange-500 transition-all duration-300"
+            >
+              <div className="scale-[0.55]">
+                {social.icon}
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
 };
 
 export default TeamSection;
+
