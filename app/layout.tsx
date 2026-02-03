@@ -5,6 +5,8 @@ import { Toaster } from "sonner";
 import localFont from "next/font/local";
 import LenisDiv from "@/lib/LenisDiv";
 import { metadata as siteMetadata } from "@/lib/metadata";
+import { Header } from "@/components/others/Header";
+import Footer from "@/components/others/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,8 +40,10 @@ export default function RootLayout({
       >
         <Toaster position="top-center" richColors />
         <LenisDiv>
+          <Header />
 
           {children}
+          <Footer/>
         </LenisDiv>
       </body>
     </html>

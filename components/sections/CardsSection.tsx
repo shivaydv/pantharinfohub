@@ -66,16 +66,16 @@ export default function CardSection() {
     });
 
     return (
-        <div ref={container} className="relative h-[400vh] bg-white pt-12 pb-0 md:pt-16 md:pb-0">
+        <div ref={container} className="relative h-[400vh] bg-white pt-6 pb-0 md:pt-16 md:pb-0">
             {/* Large Section Heading at the top (not sticky) */}
             <motion.div
                 initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-8 md:mb-12 transform transition-all duration-700"
+                className="mb-2 md:mb-12 transform transition-all duration-700"
             >
-                <FadedHeading title="OUR WORK" theme="light" overlapClass="mt-6 md:-mt-8 lg:-mt-12">
+                <FadedHeading title="OUR WORK" theme="light" overlapClass="mt-2 md:-mt-8 lg:-mt-12">
                     <div className="relative w-full max-w-7xl mx-auto px-6 text-center">
                         <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter font-cal-sans">
                             Our <span className="text-orange-500">Works.</span>
@@ -185,7 +185,7 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
             }}
             className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
         >
-            <div className="relative w-full max-w-7xl h-[85vh] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.18)] bg-[#0a0a0a]">
+            <div className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.18)] bg-[#0a0a0a]">
                 {/* Card Background */}
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 opacity-40">
@@ -207,24 +207,24 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
                 </div>
 
                 {/* Content */}
-                <div className="relative h-full flex flex-col justify-between p-8 md:p-12 lg:p-16 text-white z-10">
+                <div className="relative h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 text-white z-10">
                     {/* Top */}
-                    <div className="flex justify-between items-start">
-                        <div className="max-w-sm">
-                            <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                    <div className="flex justify-between items-start gap-4">
+                        <div className="max-w-[60%] md:max-w-sm">
+                            <p className="text-gray-400 text-xs md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
                                 {card.description}
                             </p>
                         </div>
-                        <div className="text-right">
-                            <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Year</p>
-                            <p className="text-3xl md:text-4xl font-bold">{card.year}</p>
+                        <div className="text-right shrink-0">
+                            <p className="text-gray-500 text-[10px] md:text-xs uppercase tracking-widest mb-0 md:mb-1">Year</p>
+                            <p className="text-xl md:text-4xl font-bold">{card.year}</p>
                         </div>
                     </div>
 
                     {/* Middle Image */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-6">
                         <motion.div
-                            className="relative w-[300px] md:w-[450px] lg:w-[550px] aspect-4/5 md:aspect-16/10 rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
+                            className="relative w-full max-w-[280px] md:max-w-[450px] lg:max-w-[550px] aspect-4/5 md:aspect-16/10 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
                             whileHover={{ scale: 1.02 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                         >
@@ -233,10 +233,10 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
                     </div>
 
                     {/* Bottom */}
-                    <div className="flex justify-between items-end">
-                        <div>
-                            <p className="text-gray-500 text-sm mb-2">0{index + 1} / 0{total}</p>
-                            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter">
+                    <div className="flex justify-between items-end gap-2">
+                        <div className="grow">
+                            <p className="text-gray-500 text-[10px] md:text-sm mb-1 md:mb-2">0{index + 1} / 0{total}</p>
+                            <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter truncate md:overflow-visible">
                                 {card.title}
                             </h2>
                         </div>

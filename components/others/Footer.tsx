@@ -131,12 +131,12 @@ const Footer = () => {
                 </motion.div>
 
                 {/* Massive Watermark - Centered & Responsive */}
-                <div className="relative pointer-events-none select-none z-0 overflow-hidden flex items-end justify-center h-20 md:h-32 lg:h-auto mt-auto">
+                <div className="relative pointer-events-none select-none z-0 overflow-hidden flex items-end justify-center h-24 sm:h-32 lg:h-auto mt-auto">
                     <motion.h2
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 0.1, y: 0 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="text-[25vw] sm:text-[22vw] font-black font-cal-sans text-white leading-none translate-y-[20%] whitespace-nowrap"
+                        className="text-[25vw] sm:text-[22vw] font-black font-cal-sans text-white leading-none translate-y-[10%] lg:translate-y-[20%] whitespace-nowrap"
                     >
                         PANTHAR
                     </motion.h2>

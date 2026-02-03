@@ -9,7 +9,6 @@ import Achievement from "@/components/sections/Achievement";
 import AboutSection from "@/components/sections/AboutSection";
 import FounderSection from "@/components/sections/FounderSection";
 import ParallaxStrips from "@/components/sections/Strips";
-import ServicesSection from "@/components/sections/ServicesSection";
 import CardSection from "@/components/sections/CardsSection";
 import Footer from "@/components/others/Footer";
 
@@ -32,16 +31,15 @@ const page = () => {
     <main className="relative min-h-screen bg-white font-sans">
       <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
 
-      <Header startAnimation={startMainContent} />
+      {/* <Header startAnimation={startMainContent} /> */}
       <HeroSection startAnimation={startMainContent} />
       <HeroCard />
       <Achievement />
       <AboutSection />
       <FounderSection />
-      <ServicesSection />
       <ParallaxStrips />
       <CardSection />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

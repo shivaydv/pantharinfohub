@@ -15,7 +15,7 @@ const menuItems = [
   { name: "About", href: "/about", description: "About Panthar" },
 ];
 
-const Header = ({ startAnimation }: { startAnimation: boolean }) => {
+const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   // Disable scroll when menu is open
