@@ -5,6 +5,7 @@ import { motion, useInView, animate } from "motion/react";
 import { TimelineContent } from "../motion/TimelineAnimation";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 /**
  * Replayable Counter Component - Resets when out of view
@@ -134,7 +135,7 @@ export default function AboutSection() {
                             customVariants={revealVariants}
                             className="mt-14"
                         >
-                            <button className="group relative border border-slate-950 inline-flex items-center justify-center overflow-hidden px-8 py-3.5 bg-slate-950 text-white rounded-2xl font-bold text-[14px] transition-all duration-500 hover:bg-white active:scale-95 shadow-xl shadow-slate-950/10">
+                            <Link href={"/contact"} className="group relative border border-slate-950 inline-flex items-center justify-center overflow-hidden px-8 py-3.5 bg-slate-950 text-white rounded-2xl font-bold text-[14px] transition-all duration-500 hover:bg-white active:scale-95 shadow-xl shadow-slate-950/10">
                                 <div className='inline-flex translate-y-0 items-center justify-center gap-3 transition duration-500 group-hover:-translate-y-[150%]'>
                                     Get a Free Quote
                                     <ArrowRight size={18} />
@@ -145,7 +146,7 @@ export default function AboutSection() {
                                         <ArrowRight size={18} />
                                     </span>
                                 </div>
-                            </button>
+                            </Link>
                         </TimelineContent>
                     </div>
 
@@ -158,14 +159,14 @@ export default function AboutSection() {
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={isInView ? {
                                     scale: [1, 1.1, 1],
-                                    opacity: [0.15, 0.25, 0.15]
+                                    opacity: [0.05, 0.1, 0.05]
                                 } : { opacity: 0 }}
                                 transition={{
-                                    duration: 6,
+                                    duration: 8,
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="absolute w-64 h-64 bg-orange-500 rounded-full blur-[80px]"
+                                className="absolute w-80 h-80 bg-slate-400 rounded-full blur-[100px]"
                             />
 
                             {/* Center Logo - Reveals when in view */}
@@ -177,12 +178,12 @@ export default function AboutSection() {
                                     ease: [0.32, 0.72, 0, 1],
                                     delay: 0.2
                                 }}
-                                className="relative z-20 w-24 h-24 rounded-3xl bg-slate-950 shadow-2xl flex items-center justify-center border border-white/10 overflow-hidden"
+                                className="relative z-20 w-28 h-28 rounded-[2rem] flex items-center justify-center  overflow-hidden"
                             >
-                                <div className="absolute inset-0 bg-linear-to-tr from-orange-500/20 to-transparent" />
-                                <div className="relative w-12 h-12 z-10">
+                                <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent" />
+                                <div className="relative w-20 h-20 z-10">
                                     <Image
-                                        src="/logo.png"
+                                        src="/black_logo.png"
                                         alt="Panthar Logo"
                                         fill
                                         className="object-contain"
@@ -191,11 +192,11 @@ export default function AboutSection() {
                                 </div>
                             </motion.div>
 
-                            {/* Orbiting Orbs System - Reveals and starts when in view */}
+                            {/* Orbiting Logo System - Reveals and starts when in view */}
                             {[
-                                { radius: 140, duration: 25, size: 8, delay: 0 },
-                                { radius: 190, duration: 40, size: 12, delay: -5 },
-                                { radius: 250, duration: 55, size: 10, delay: -10 },
+                                { radius: 140, duration: 25, size: 40, delay: 0, img: "/logo/lesspay.webp" },
+                                { radius: 190, duration: 40, size: 48, delay: -25, img: "/logo/giveat.jpeg" },
+                                { radius: 250, duration: 55, size: 44, delay: -80, img: "/logo/logo.webp" },
                             ].map((orbit, i) => (
                                 <motion.div
                                     key={i}
@@ -208,7 +209,7 @@ export default function AboutSection() {
                                         height: orbit.radius * 2,
                                     }}
                                 >
-                                    {/* Primary Orange Orb */}
+                                    {/* Rotating Logo Wrapper */}
                                     <motion.div
                                         className="absolute inset-0"
                                         animate={{ rotate: 360 }}
@@ -221,34 +222,37 @@ export default function AboutSection() {
                                         style={{ transformOrigin: '50% 50%' }}
                                     >
                                         <div
-                                            className="absolute top-0 left-1/2 bg-orange-500 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.4)]"
+                                            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 group"
                                             style={{
                                                 width: orbit.size,
                                                 height: orbit.size,
-                                                transform: 'translate(-50%, -50%)'
                                             }}
-                                        />
+                                        >
+                                            <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white shadow-[0_8px_20px_rgba(0,0,0,0.06)] border border-slate-50 p-2 transform transition-transform duration-500 group-hover:scale-110">
+                                                <Image
+                                                    src={orbit.img}
+                                                    alt="Partner Logo"
+                                                    fill
+                                                    className="object-cover p-1"
+                                                />
+                                            </div>
+                                        </div>
                                     </motion.div>
 
-                                    {/* Secondary Slate Orb (Counter-rotating) */}
+                                    {/* Secondary Decorative Particle (Replaces Secondary Slate Orb) */}
                                     <motion.div
                                         className="absolute inset-0"
                                         animate={{ rotate: -360 }}
                                         transition={{
-                                            duration: orbit.duration * 1.5,
+                                            duration: orbit.duration * 2,
                                             repeat: Infinity,
                                             ease: "linear",
-                                            delay: orbit.delay - 15
+                                            delay: orbit.delay - 10
                                         }}
                                         style={{ transformOrigin: '50% 50%' }}
                                     >
                                         <div
-                                            className="absolute top-0 left-1/2 bg-slate-200 rounded-full"
-                                            style={{
-                                                width: orbit.size - 2,
-                                                height: orbit.size - 2,
-                                                transform: 'translate(-50%, -50%)'
-                                            }}
+                                            className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-slate-200 rounded-full -translate-x-1/2 -translate-y-1/2"
                                         />
                                     </motion.div>
                                 </motion.div>
