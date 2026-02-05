@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useActionState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkle, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowRight, Sparkle, Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import { contactFormAction } from "@/lib/actions";
+import { toast } from "sonner";
 
 export default function ContactPage() {
     const [selectedServices, setSelectedServices] = useState<string[]>(["App design"]);
@@ -13,6 +15,29 @@ export default function ContactPage() {
         "Web design",
         "SaaS design"
     ];
+
+    const handleSubmit = async (prevState: any, formData: FormData) => {
+        formData.append("services", selectedServices.join(", "));
+        const res = await contactFormAction(formData);
+        if (res.status === "SUCCESS") {
+            toast.success(res.message);
+            return { ...prevState, status: "SUCCESS" };
+        } else {
+            toast.error(res.message || "Something went wrong");
+            return { ...prevState, status: "ERROR" };
+        }
+    };
+
+    const [state, formAction, isPending] = useActionState(handleSubmit, { status: "INITIAL" });
+
+    useEffect(() => {
+        if (state.status === "SUCCESS") {
+            // Reset form if needed or show success UI
+            const form = document.querySelector('form') as HTMLFormElement;
+            if (form) form.reset();
+            setSelectedServices(["App design"]);
+        }
+    }, [state]);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -33,7 +58,6 @@ export default function ContactPage() {
 
     return (
         <main className="bg-white min-h-screen selection:bg-orange-100 selection:text-orange-600">
-
             {/* 1. CENTERED HEADER SECTION */}
             <section className="pt-40 pb-20 px-6 md:px-16 bg-white text-center">
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center">
@@ -79,13 +103,15 @@ export default function ContactPage() {
                         variants={containerVariants}
                         className="w-full"
                     >
-                        <form className="space-y-12 md:space-y-16">
+                        <form action={formAction} className="space-y-12 md:space-y-16">
                             {/* Row 1: Name & Email */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                                 <motion.div variants={itemVariants} className="flex flex-col gap-4">
                                     <label className="text-2xl font-bold text-gray-900 tracking-tight">Full name*</label>
                                     <div className="border-b border-gray-200 pb-2 focus-within:border-orange-500 transition-all">
                                         <input
+                                            required
+                                            name="user_name"
                                             type="text"
                                             placeholder="Enter your name"
                                             className="w-full bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg py-2"
@@ -96,6 +122,8 @@ export default function ContactPage() {
                                     <label className="text-2xl font-bold text-gray-900 tracking-tight">Email adress*</label>
                                     <div className="border-b border-gray-200 pb-2 focus-within:border-orange-500 transition-all">
                                         <input
+                                            required
+                                            name="user_mail"
                                             type="email"
                                             placeholder="Enter your email address"
                                             className="w-full bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg py-2"
@@ -128,6 +156,7 @@ export default function ContactPage() {
                                     <label className="text-2xl font-bold text-gray-900 tracking-tight">Budget</label>
                                     <div className="border-b border-gray-200 pb-2 focus-within:border-orange-500 transition-all">
                                         <input
+                                            name="budget"
                                             type="text"
                                             placeholder="Enter your budget"
                                             className="w-full bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg py-2"
@@ -141,6 +170,8 @@ export default function ContactPage() {
                                 <label className="text-2xl font-bold text-gray-900 tracking-tight">Message</label>
                                 <div className="border-b border-gray-200 pb-2 focus-within:border-orange-500 transition-all">
                                     <textarea
+                                        required
+                                        name="message"
                                         placeholder="Write your message here..."
                                         rows={1}
                                         className="w-full bg-transparent border-none outline-none text-gray-600 placeholder:text-gray-300 text-lg py-2 resize-none overflow-hidden min-h-[48px]"
@@ -151,11 +182,20 @@ export default function ContactPage() {
                             {/* Submit Button */}
                             <motion.div variants={itemVariants} className="pt-4 flex justify-center md:justify-start">
                                 <motion.button
-                                    whileHover={{ scale: 1.02, x: 5 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="px-12 py-5 bg-orange-500 text-white rounded-[2rem] font-bold text-lg flex items-center justify-center gap-4 shadow-xl shadow-orange-500/20 hover:shadow-orange-500/40 transition-all"
+                                    disabled={isPending}
+                                    whileHover={!isPending ? { scale: 1.02, x: 5 } : {}}
+                                    whileTap={!isPending ? { scale: 0.98 } : {}}
+                                    className="px-12 py-5 bg-orange-500 text-white rounded-[2rem] font-bold text-lg flex items-center justify-center gap-4 shadow-xl shadow-orange-500/20 hover:shadow-orange-500/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Send Message <ArrowRight size={20} />
+                                    {isPending ? (
+                                        <>
+                                            Sending... <Loader2 className="animate-spin" size={20} />
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message <ArrowRight size={20} />
+                                        </>
+                                    )}
                                 </motion.button>
                             </motion.div>
                         </form>
@@ -187,7 +227,7 @@ export default function ContactPage() {
                         className="relative"
                     >
                         <h2 className="text-[clamp(2.5rem,8vw,6rem)] font-normal tracking-[-0.05em] text-gray-100 font-cal-sans uppercase select-none leading-none">
-                            PANTHAR INFOHUB 
+                            PANTHAR INFOHUB
                         </h2>
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <p className="text-[12px] font-black tracking-[1.2em] text-orange-500 uppercase">Designing the Future</p>
@@ -195,7 +235,6 @@ export default function ContactPage() {
                     </motion.div>
                 </div>
             </section>
-
         </main>
     );
 }

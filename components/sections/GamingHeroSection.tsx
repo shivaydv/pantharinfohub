@@ -143,18 +143,18 @@ const GamingHeroSection = ({ startAnimation = true }: { startAnimation?: boolean
     // Assets arranged in a U-shape around the text
     const assets = [
         // Left Side
-        { src: "/icons/figma 1.png", alt: "figma", className: "w-16 h-16 md:w-24 md:h-24 top-[45%] left-[5%]" },
-        { src: "/icons/docker 1.png", alt: "docker", className: "w-12 h-12 md:w-24 md:h-24 top-[60%] left-[10%]" },
-        { src: "/icons/kolin 1.png", alt: "kotlin", className: "w-14 h-14 md:w-24 md:h-24 bottom-[20%] left-[20%]" },
+        { src: "/icons/figma 1.png", alt: "figma", className: "w-12 h-12 md:w-24 md:h-24 top-[20%] md:top-[45%] left-[12%] md:left-[5%]" },
+        { src: "/icons/docker 1.png", alt: "docker", className: "w-10 h-10 md:w-24 md:h-24 top-[40%] md:top-[60%] left-6 md:left-[10%]" },
+        { src: "/icons/kolin 1.png", alt: "kotlin", className: "w-10 h-10 md:w-24 md:h-24 bottom-[30%] md:bottom-[20%] left-[20%] md:left-[20%]" },
 
         // Bottom (The base of the U)
-        { src: "/icons/mongo-db 1.png", alt: "mongo", className: "w-16 h-16 md:w-24 md:h-24 bottom-[10%] left-[35%]" },
-        { src: "/icons/Next.js 1.png", alt: "nextjs", className: "w-18 h-18 md:w-24 md:h-24 bottom-[5%] right-[35%]" },
+        { src: "/icons/android 1.png", alt: "android", className: "w-12 h-12 md:w-24 md:h-24 bottom-[18%] md:bottom-[10%] left-[60%] md:left-[35%]" },
+        { src: "/icons/Next.js 1.png", alt: "nextjs", className: "w-12 h-12 md:w-24 md:h-24 bottom-[18%] md:bottom-[5%] right-[60%] md:right-[35%]" },
 
         // Right Side
-        { src: "/icons/postgresql 1.png", alt: "postgresql", className: "w-14 h-14 md:w-24 md:h-24 bottom-[20%] right-[20%]" },
-        { src: "/icons/Superbase 1.png", alt: "supabase", className: "w-12 h-12 md:w-24 md:h-24 top-[60%] right-[10%]" },
-        { src: "/icons/Express.js 1.png", alt: "express", className: "w-16 h-16 md:w-24 md:h-24 top-[45%] right-[5%]" },
+        { src: "/icons/postgresql 1.png", alt: "postgresql", className: "w-10 h-10 md:w-24 md:h-24 bottom-[30%] md:bottom-[20%] right-[20%] md:right-[20%]" },
+        { src: "/icons/Superbase 1.png", alt: "supabase", className: "w-10 h-10 md:w-24 md:h-24 top-[50%] md:top-[60%] right-6 md:right-[10%]" },
+        { src: "/icons/Express.js 1.png", alt: "express", className: "w-12 h-12 md:w-24 md:h-24 top-[20%] md:top-[45%] right-[12%] md:right-[5%]" },
     ];
 
     return (
