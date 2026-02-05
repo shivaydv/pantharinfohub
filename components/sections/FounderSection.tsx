@@ -33,7 +33,7 @@ export default function FounderSection() {
                                 {/* Founder Image */}
                                 <div className="relative h-full w-full">
                                     <img
-                                        src="/user/Abahy.jpg"
+                                        src="/user/Abhay.png"
                                         alt="Founder"
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                     />
@@ -47,7 +47,7 @@ export default function FounderSection() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.4 }}
                                         href="#"
-                                        className="w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
+                                        className="w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
                                         aria-label="LinkedIn"
                                     >
                                         <Linkedin className="w-4 h-4 text-white group-hover/icon:scale-110 transition-transform" />
@@ -58,7 +58,7 @@ export default function FounderSection() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.5 }}
                                         href="#"
-                                        className="w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
+                                        className="w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
                                         aria-label="Instagram"
                                     >
                                         <Instagram className="w-4 h-4 text-white group-hover/icon:scale-110 transition-transform" />
@@ -75,13 +75,13 @@ export default function FounderSection() {
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1], delay: 0.2 }}
                             >
-                                <h2 className="text-4xl lg:text-5xl font-bold text-black mb-8 font-cal-sans tracking-tight leading-tight">The Founder</h2>
+                                <h2 className="text-4xl lg:text-5xl font-bold text-orange-500 mb-8 font-cal-sans tracking-tight leading-tight">The Founder</h2>
                                 <p className="text-gray-600 text-lg lg:text-xl leading-relaxed font-light">
-                                    Franklin Clinton is a visual designer focused on crafting bold, functional design
-                                    systems. He works with creative teams and startups to build standout brands and
-                                    seamless digital experiences. Based in London, he balances clarity with character
-                                    — and enjoys experimenting with motion design and interactive visuals in his spare
-                                    time.
+                                    Abhay Namdev is a entrepreneur focused on building
+                                    scalable, high-performance systems. He works with engineering teams and
+                                    startups to architect robust platforms. He balances technical excellence with strategic vision
+                                    — and enjoys exploring emerging technologies and open-source projects in
+                                    his spare time.
                                 </p>
                             </motion.div>
 

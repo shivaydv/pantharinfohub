@@ -5,9 +5,9 @@ import { useRef } from "react";
 
 /* ---------------- CONTENT ---------------- */
 
-const ORANGE_ITEMS = ["Website Design", "Brand Design", "Logo Design"];
+const ORANGE_ITEMS = ["Custom Web Development", "E-Commerce Excellence", "Mobile App Development"];
 
-const BLACK_ITEMS = ["Senior Designer", "10 Years of Experience", "Over 100 Customers"];
+const BLACK_ITEMS = ["Artificial Intelligence", "Cloud Computing", "Custom Enterprise Software","DevOps"];
 
 /* ---------------- MAIN ---------------- */
 

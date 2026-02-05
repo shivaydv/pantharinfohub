@@ -38,7 +38,7 @@ const ServicesSection = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={headingVariants}
-                className="max-w-xl overflow-hidden"
+                className="max-w-2xl overflow-visible"
               >
                 <motion.h2
                   variants={{
@@ -72,10 +72,11 @@ const ServicesSection = () => {
             ))}
 
             {/* Final Luxury CTA Card */}
-            <motion.div
+            <motion.a
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              href="/contact"
               className="shrink-0 w-[240px] md:w-[340px] lg:w-[380px] aspect-4/5 flex flex-col justify-end p-8 md:p-12 rounded-[2.5rem] bg-orange-500 text-white group cursor-pointer transition-transform duration-1000 hover:scale-[0.98]"
             >
               <span className="text-[10px] font-black uppercase tracking-[0.4em] mb-auto">Next Phase</span>
@@ -90,7 +91,7 @@ const ServicesSection = () => {
                 </div>
                 <span className="text-sm font-bold uppercase tracking-widest">Let's talk</span>
               </div>
-            </motion.div>
+            </motion.a>
           </motion.div>
         </div>
 

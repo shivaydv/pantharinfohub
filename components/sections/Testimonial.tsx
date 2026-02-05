@@ -20,7 +20,7 @@ const testimonials = [
         author: "Marcus Webb",
         role: "Head of Design",
         company: "Minimal Co",
-        image: "/user/Abahy.jpg",
+        image: "/user/Abhay.png",
     },
     {
         id: 3,
@@ -160,8 +160,8 @@ export default function TestimonialsEditorial() {
                                     >
                                         <span
                                             className={`block h-[2px] rounded-full transition-all duration-500 ease-out ${index === active
-                                                    ? "w-12 bg-orange-500"
-                                                    : "w-6 bg-gray-200 group-hover:w-8 group-hover:bg-orange-300"
+                                                ? "w-12 bg-orange-500"
+                                                : "w-6 bg-gray-200 group-hover:w-8 group-hover:bg-orange-300"
                                                 }`}
                                         />
                                     </button>

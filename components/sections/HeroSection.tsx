@@ -73,7 +73,7 @@ const HeroSection = ({ startAnimation=true }: { startAnimation?: boolean }) => {
                         {[1, 2, 3].map((i) => (
                             <div key={i} className="w-7 h-7 rounded-full border border-white bg-slate-200 overflow-hidden relative shadow-sm">
                                 <Image
-                                    src="/user/Abahy.jpg"
+                                    src="/user/Ab.jpg"
                                     alt="founder"
                                     fill
                                     className="object-cover"

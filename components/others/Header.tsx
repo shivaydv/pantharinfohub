@@ -85,8 +85,8 @@ const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
               <Image
                 src="/black_logo.png"
                 alt="Logo"
-                width={50}
-                height={50}
+                width={60}
+                height={60}
                 className="object-contain"
               />
             </Link>

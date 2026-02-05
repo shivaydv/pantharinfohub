@@ -4,6 +4,15 @@ import React from "react";
 import { ArrowUp, Twitter, Instagram, Linkedin, Github, Mail, ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
+
+const FooterLinks = [
+    { label: "About Us", href: "/#about" },
+    {label:"Projects", href:"/projects"},
+    { label: "Our Team", href: "/team" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
+    // {label:"Privacy Policy", href:"/privacy-policy"},
+]
 // Footer Links Data
 const footerLinks = {
     company: {
@@ -12,7 +21,7 @@ const footerLinks = {
             { label: "About Us", href: "/#about" },
             { label: "Our Team", href: "/team" },
             { label: "Careers", href: "/career" },
-            { label: "Contact", href: "/#contact" },
+            { label: "Contact", href: "/contact" },
         ],
     },
     services: {
@@ -93,8 +102,8 @@ const Footer = () => {
                                 </p>
                                 <div className="flex flex-col gap-2">
                                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Contact</span>
-                                    <Link href="mailto:hello@panthar.io" className="text-xl font-cal-sans hover:text-orange-500 transition-colors">
-                                        hello@panthar.io
+                                    <Link href="mailto:connect@pantharinfohub.com" className="text-xl font-cal-sans hover:text-orange-500 transition-colors">
+                                        connect@pantharinfohub.com
                                     </Link>
                                 </div>
                                 <div className="flex gap-5 pt-4">
@@ -114,7 +123,7 @@ const Footer = () => {
                             <div className="text-left lg:text-right">
                                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500 mb-8">Navigation</h3>
                                 <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-8 gap-y-4">
-                                    {[...footerLinks.services.links, ...footerLinks.company.links].slice(0, 6).map((link, i) => (
+                                    {FooterLinks.map((link, i) => (
                                         <li key={i}>
                                             <Link
                                                 href={link.href}

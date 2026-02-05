@@ -1,6 +1,7 @@
 "use client";
 import Preloader from "@/components/others/Preloader";
 import HeroSection from "@/components/sections/HeroSection";
+import GamingHeroSection from "@/components/sections/GamingHeroSection";
 import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/others/Header";
@@ -33,12 +34,13 @@ const page = () => {
       {/* <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence> */}
 
       {/* <Header startAnimation={startMainContent} /> */}
-      <HeroSection  />
+      {/* <HeroSection /> */}
+      <GamingHeroSection />
       <HeroCard />
       <Achievement />
       <AboutSection />
       <FounderSection />
-      <TestimonialsEditorial/>
+      <TestimonialsEditorial />
       <ParallaxStrips />
       <CardSection />
       {/* <Footer /> */}
