@@ -9,25 +9,25 @@ const testimonials = [
     {
         id: 1,
         quote: "The attention to detail and creative vision transformed our brand identity completely.",
-        author: "Sarah Chen",
+        author: "Sneha",
         role: "Creative Director",
-        company: "Studio Forma",
+        company: "Pankhuri",
         image: "/user/Sneha.jpg",
     },
     {
         id: 2,
-        quote: "Working with them felt like a true creative partnership from day one.",
-        author: "Marcus Webb",
-        role: "Head of Design",
-        company: "Minimal Co",
+        quote: "We are a team of passionate individuals who love what we do.",
+        author: "Abhay",
+        role: "CEO",
+        company: "Panthar Infohub Pvt. Ltd.",
         image: "/user/Abhay.png",
     },
     {
         id: 3,
-        quote: "They understand that great design is invisible yet unforgettable.",
-        author: "Elena Voss",
-        role: "Art Director",
-        company: "Pixel & Co",
+        quote: "As a frontend developer, I can say that Panthar Infohub Pvt. Ltd. is a great company to work with.",
+        author: "Pulkit",
+        role: "Frontend Developer",
+        company: "Panthar Infohub Pvt. Ltd.",
         image: "/user/Pulkit.jpg",
     },
 ];
@@ -55,7 +55,7 @@ export default function TestimonialsEditorial() {
     return (
         <section className="relative py-20 sm:py-28 lg:py-36 px-6 bg-white overflow-hidden">
             {/* Background texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-[size:24px_24px]" />
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[24px_24px]" />
 
             <div className="max-w-[1400px] mx-auto">
                 {/* Section Header */}

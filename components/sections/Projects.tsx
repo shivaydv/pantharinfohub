@@ -157,7 +157,7 @@ function ProjectRow({
                             {data.role}
                         </span>
                         <span className="text-[9px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                            {data.year} Edition
+                            {data.year}
                         </span>
                     </div>
 

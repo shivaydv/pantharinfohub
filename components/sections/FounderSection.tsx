@@ -6,10 +6,8 @@ import { motion } from "motion/react";
 import { Abhay } from "@/lib/data";
 
 const experience = [
-    { position: "Founder at Agero", period: "2024-Now" },
-    { position: "Brand Designer at Google", period: "2023-2024" },
-    { position: "Web Designer at Shopify", period: "2018-2023" },
-    { position: "Junior Designer at Meta", period: "2015-2018" },
+    { position: "Youngest CEO Recognition", period: "2021" },
+    { position: "Founder of Panthar Infohub Pvt. Ltd.", period: "" },
 ];
 
 export default function FounderSection() {
@@ -78,11 +76,11 @@ export default function FounderSection() {
                             >
                                 <h2 className="text-4xl lg:text-5xl font-bold text-orange-500 mb-8 font-cal-sans tracking-tight leading-tight">The Founder</h2>
                                 <p className="text-gray-600 text-lg lg:text-xl leading-relaxed font-light">
-                                    Abhay Namdev is a entrepreneur focused on building
-                                    scalable, high-performance systems. He works with engineering teams and
-                                    startups to architect robust platforms. He balances technical excellence with strategic vision
-                                    — and enjoys exploring emerging technologies and open-source projects in
-                                    his spare time.
+                                    Abhay Namdev is an Indian tech entrepreneur and startup founder known for leading Panthar
+Infohub, a software development company based in Thane, Maharashtra. He has been
+recognized for his leadership in building early-stage tech products and driving innovation in
+areas such as emergency response and personal safety applications.
+
                                 </p>
                             </motion.div>
 
