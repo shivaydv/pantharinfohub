@@ -3,6 +3,7 @@
 import { Twitter, Instagram, Linkedin } from "lucide-react";
 import FadedHeading from "../others/FadedHeading";
 import { motion } from "motion/react";
+import { Abhay } from "@/lib/data";
 
 const experience = [
     { position: "Founder at Agero", period: "2024-Now" },
@@ -46,7 +47,7 @@ export default function FounderSection() {
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.4 }}
-                                        href="#"
+                                        href={Abhay.socials[0].link}
                                         className="w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
                                         aria-label="LinkedIn"
                                     >
@@ -57,7 +58,7 @@ export default function FounderSection() {
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: 0.5 }}
-                                        href="#"
+                                        href={Abhay.socials[1].link}
                                         className="w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 transition-all duration-300 group/icon"
                                         aria-label="Instagram"
                                     >

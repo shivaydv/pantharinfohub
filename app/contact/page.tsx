@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useActionState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkle, Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import { contactFormAction } from "@/lib/actions";
 import { toast } from "sonner";
+import { siteConfig } from "@/lib/metadata";
 
 export default function ContactPage() {
     const [selectedServices, setSelectedServices] = useState<string[]>(["App design"]);
@@ -203,13 +205,15 @@ export default function ContactPage() {
                         {/* Bottom Details */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 pt-16 border-t border-gray-200">
                             {[
-                                { icon: Mail, label: "Email", value: "hello@panthar.io" },
-                                { icon: Phone, label: "Phone", value: "+1 (555) 000-0000" },
-                                { icon: MapPin, label: "Studio", value: "Global / Remote" }
+                                { icon: Mail, label: "Email", value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
+                                { icon: Phone, label: "Phone", value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone}` },
+                                { icon: MapPin, label: "Studio", value: siteConfig.region, href: "#" }
                             ].map((item, i) => (
                                 <motion.div key={i} variants={itemVariants} className="flex flex-col gap-1">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{item.label}</p>
-                                    <p className="text-base font-bold text-gray-900">{item.value}</p>
+                                    <Link href={item.href || "#"} className="text-base font-bold text-gray-900 hover:text-orange-500 transition-colors">
+                                        {item.value}
+                                    </Link>
                                 </motion.div>
                             ))}
                         </div>

@@ -188,7 +188,7 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
             className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
         >
             <div className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.18)] bg-[#0a0a0a]">
-                {/* Card Background */}
+                
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 opacity-40">
                         <Image
@@ -208,9 +208,7 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
                     />
                 </div>
 
-                {/* Content */}
                 <div className="relative h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 text-white z-10">
-                    {/* Top */}
                     <div className="flex justify-between items-start gap-4">
                         <div className="max-w-[60%] md:max-w-sm">
                             <p className="text-gray-400 text-xs md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
@@ -223,7 +221,6 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
                         </div>
                     </div>
 
-                    {/* Middle Image */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-6">
                         <motion.div
                             className="relative w-full max-w-[280px] md:max-w-[450px] lg:max-w-[550px] aspect-4/5 md:aspect-16/10 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
@@ -234,7 +231,6 @@ const Card = ({ card, progress, index, total }: { card: any; progress: any; inde
                         </motion.div>
                     </div>
 
-                    {/* Bottom */}
                     <div className="flex justify-between items-end gap-2">
                         <div className="grow">
                             <p className="text-gray-500 text-[10px] md:text-sm mb-1 md:mb-2">0{index + 1} / 0{total}</p>

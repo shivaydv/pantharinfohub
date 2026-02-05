@@ -9,15 +9,16 @@ export const siteConfig = {
     region: "Jhansi, Uttar Pradesh, India",
     socials: {
         website: "https://pantharinfohub.com",
-        linkedin: "https://www.linkedin.com/company/panthar-infohub",
-        instagram: "https://www.instagram.com/panthar.infohub",
-        twitter: "https://twitter.com/pantharinfohub",
-        facebook: "https://www.facebook.com/profile.php?id=61564989943162",
-        youtube: "https://youtube.com/@pantharinfohub",
+        linkedin: "https://www.linkedin.com/company/panthar-infohub/",
+        instagram: "https://www.instagram.com/panthar.infohub?igsh=ZWxsejBtaGF2dmhh",
+        twitter: "",
+        facebook: "",
+        youtube: "",
     },
     contact: {
-        email: "contact@pantharinfohub.com",
-        address: "Jhansi, Uttar Pradesh, India",
+        email: "connect@pantharinfohub.com",
+        phone: "+91 6393957916",
+        address: "RISE Incubation, Nagar Nigam Premises, Elite Square, Civil Lines, Jhansi (UP) - 284001",
     },
 };
 

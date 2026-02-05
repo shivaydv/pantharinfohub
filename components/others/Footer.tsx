@@ -3,51 +3,22 @@ import Link from "next/link";
 import React from "react";
 import { ArrowUp, Twitter, Instagram, Linkedin, Github, Mail, ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-
+import { siteConfig } from "@/lib/metadata";
 
 const FooterLinks = [
     { label: "About Us", href: "/#about" },
-    {label:"Projects", href:"/projects"},
+    { label: "Projects", href: "/projects" },
     { label: "Our Team", href: "/team" },
     { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
     // {label:"Privacy Policy", href:"/privacy-policy"},
 ]
-// Footer Links Data
-const footerLinks = {
-    company: {
-        heading: "Company",
-        links: [
-            { label: "About Us", href: "/#about" },
-            { label: "Our Team", href: "/team" },
-            { label: "Careers", href: "/career" },
-            { label: "Contact", href: "/contact" },
-        ],
-    },
-    services: {
-        heading: "Services",
-        links: [
-            { label: "Web Development", href: "/#services" },
-            { label: "App Development", href: "/#services" },
-            { label: "UI/UX Design", href: "/#services" },
-            { label: "Digital Marketing", href: "/#services" },
-        ],
-    },
-    resources: {
-        heading: "Resources",
-        links: [
-            { label: "Our Work", href: "/work" },
-            { label: "Training", href: "/training" },
-            { label: "Blog", href: "#" },
-            { label: "Privacy Policy", href: "#" },
-        ],
-    },
-};
+
 
 const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    // const scrollToTop = () => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    // };
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
@@ -102,13 +73,16 @@ const Footer = () => {
                                 </p>
                                 <div className="flex flex-col gap-2">
                                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Contact</span>
-                                    <Link href="mailto:connect@pantharinfohub.com" className="text-xl font-cal-sans hover:text-orange-500 transition-colors">
-                                        connect@pantharinfohub.com
+                                    <Link href={`mailto:${siteConfig.contact.email}`} className="text-xl font-cal-sans hover:text-orange-500 transition-colors">
+                                        {siteConfig.contact.email}
                                     </Link>
                                 </div>
                                 <div className="flex gap-5 pt-4">
-                                    {[Twitter, Instagram, Linkedin, Github].map((Icon, i) => (
-                                        <Link key={i} href="#" className="text-gray-500 hover:text-white transition-colors">
+                                    {[
+                                        { Icon: Instagram, href: siteConfig.socials.instagram },
+                                        { Icon: Linkedin, href: siteConfig.socials.linkedin },
+                                    ].map(({ Icon, href }, i) => (
+                                        <Link key={i} href={href} target="_blank" className="text-gray-500 hover:text-white transition-colors">
                                             <Icon className="size-5" />
                                         </Link>
                                     ))}
