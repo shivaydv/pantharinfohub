@@ -11,7 +11,7 @@ const FooterLinks = [
     { label: "Our Team", href: "/team" },
     { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
-    // {label:"Privacy Policy", href:"/privacy-policy"},
+    {label:"Career", href:"/career"},
 ]
 
 

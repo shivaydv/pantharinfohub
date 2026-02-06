@@ -8,6 +8,8 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useLoading } from "@/lib/LoadingContext";
+
 const menuItems = [
   { name: "Projects", href: "/projects", description: "Our latest case studies" },
   { name: "Services", href: "/services", description: "Expert AI & Software solutions" },
@@ -15,7 +17,9 @@ const menuItems = [
   { name: "About", href: "/#about", description: "About Panthar" },
 ];
 
-const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
+const Header = ({ startAnimation: startAnimationProp }: { startAnimation?: boolean }) => {
+  const { canStartAnimations } = useLoading();
+  const startAnimation = startAnimationProp !== undefined ? startAnimationProp : canStartAnimations;
   const [isOpen, setIsOpen] = React.useState(false);
 
   // Disable scroll when menu is open
@@ -88,6 +92,7 @@ const Header = ({ startAnimation = true }: { startAnimation?: boolean }) => {
                 width={60}
                 height={60}
                 className="object-contain"
+                priority
               />
             </Link>
           </div>

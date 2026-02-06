@@ -58,8 +58,36 @@ const Preloader = () => {
         <motion.div variants={slideUp} initial="initial" exit="exit" className="h-screen w-screen flex items-center justify-center fixed inset-0 z-9999 bg-black">
             {dimension.width > 0 &&
                 <>
-                    <motion.p variants={opacity} className='flex text-white text-7xl items-center absolute z-10' initial="initial" animate="enter"><span className='w-4 h-4 rounded-full bg-white mr-4' />{words[index]}</motion.p>
-                    <svg className='absolute top-0 w-full h-[calc(100%+300px)]'>
+                    <motion.div variants={opacity} className='flex flex-col items-center absolute z-10' initial="initial" animate="enter">
+                        <div className="flex items-center">
+                            <motion.span
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                    opacity: [1, 0.7, 1]
+                                }}
+                                transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                className='w-3 h-3 md:w-4 md:h-4 rounded-full bg-orange-500 mr-4 md:mr-6'
+                            />
+                            <p className="text-white text-5xl md:text-7xl uppercase tracking-tight" >
+                                {words[index]}
+                            </p>
+                        </div>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.5 }}
+                            className="mt-8 overflow-hidden"
+                        >
+                            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 block">
+                                Initializing Experience
+                            </span>
+                        </motion.div>
+                    </motion.div>
+                    <svg className='absolute top-0 w-full h-[calc(100%+300px)] pointer-events-none'>
                         <motion.path variants={curve} fill="black" initial="initial" exit="exit"></motion.path>
                     </svg>
                 </>

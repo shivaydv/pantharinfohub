@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono ,Source_Code_Pro} from "next/font/google";
+import { Geist, Geist_Mono, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import localFont from "next/font/local";
@@ -22,7 +22,7 @@ const CalSans = localFont({
   src: "../fonts/CalSans-Regular.ttf",
   variable: "--font-cal-sans",
   weight: "600",
-}); 
+});
 
 const tusker = localFont({
   src: "../fonts/tusker.otf",
@@ -39,6 +39,8 @@ export const metadata: Metadata = siteMetadata;
 
 
 
+import { LoadingProvider } from "@/lib/LoadingContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,12 +52,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${CalSans.variable} ${SourceCodePro.variable} ${tusker.variable} antialiased`}
       >
         <Toaster position="top-center" richColors />
-        <LenisDiv>
-          <Header />
-
-          {children}
-          <Footer/>
-        </LenisDiv>
+        <LoadingProvider>
+          <LenisDiv>
+            <Header />
+            {children}
+            <Footer />
+          </LenisDiv>
+        </LoadingProvider>
       </body>
     </html>
   );

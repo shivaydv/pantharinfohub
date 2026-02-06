@@ -89,6 +89,7 @@ const FloatingAsset = ({ src, alt, className, delay, startAnimation, mouseX, mou
                         alt={alt}
                         fill
                         className="object-contain"
+                        priority
                     />
                 </div>
             </motion.div>
