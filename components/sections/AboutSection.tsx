@@ -194,9 +194,9 @@ export default function AboutSection() {
 
                             {/* Orbiting Logo System - Reveals and starts when in view */}
                             {[
-                                { radius: 140, duration: 25, size: 40, delay: 0, img: "/logo/lesspay.webp" },
-                                { radius: 190, duration: 40, size: 48, delay: -25, img: "/logo/giveat.jpeg" },
-                                { radius: 250, duration: 55, size: 44, delay: -80, img: "/logo/logo.webp" },
+                                { radius: 140, duration: 25, size: 60, delay: 0, img: "/logo/lesspay.webp" },
+                                { radius: 190, duration: 40, size: 60, delay: -25, img: "/logo/giveat.jpeg" },
+                                { radius: 250, duration: 55, size: 60, delay: -80, img: "/logo/logo.webp" },
                             ].map((orbit, i) => (
                                 <motion.div
                                     key={i}

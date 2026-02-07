@@ -82,15 +82,15 @@ const Header = ({ startAnimation: startAnimationProp }: { startAnimation?: boole
           isOpen ? "bg-white" : "bg-transparent",
         )}
       >
-        <div className="w-full max-w-7xl grid lg:grid-cols-3 grid-cols-2 items-center px-6 h-16">
+        <div className="w-full max-w-7xl grid lg:grid-cols-3 grid-cols-2 items-center px-6 h-20">
           {/* Logo Section - Left */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <Image
                 src="/black_logo.png"
                 alt="Logo"
-                width={60}
-                height={60}
+                width={80}
+                height={80}
                 className="object-contain"
                 priority
               />
