@@ -12,10 +12,12 @@ export default function ContactPage() {
     const [selectedServices, setSelectedServices] = useState<string[]>(["App design"]);
 
     const services = [
-        "App design",
-        "Dashboard design",
-        "Web design",
-        "SaaS design"
+        "App Development",
+        "Web Development",
+        "SaaS",
+        "UI/UX Design",
+        "AI Development",
+        "Others"
     ];
 
     const handleSubmit = async (prevState: any, formData: FormData) => {
@@ -207,13 +209,23 @@ export default function ContactPage() {
                             {[
                                 { icon: Mail, label: "Email", value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
                                 { icon: Phone, label: "Phone", value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone}` },
-                                { icon: MapPin, label: "Studio", value: siteConfig.region, href: "#" }
+                                { icon: MapPin, label: "Address", value: siteConfig.contact.addresses, href: "#" }
                             ].map((item, i) => (
                                 <motion.div key={i} variants={itemVariants} className="flex flex-col gap-1">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{item.label}</p>
-                                    <Link href={item.href || "#"} className="text-base font-bold text-gray-900 hover:text-orange-500 transition-colors">
-                                        {item.value}
-                                    </Link>
+                                    {Array.isArray(item.value) ? (
+                                        <div className="grid grid-cols-1 gap-6 mt-3">
+                                            {item.value.map((val, idx) => (
+                                                <p key={idx} className="text-[13px] font-medium text-gray-900 leading-relaxed border-l border-gray-200 pl-4">
+                                                    {val}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <Link href={item.href || "#"} className="text-base font-medium text-gray-900 hover:text-orange-500 transition-colors">
+                                            {item.value}
+                                        </Link>
+                                    )}
                                 </motion.div>
                             ))}
                         </div>

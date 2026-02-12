@@ -18,7 +18,10 @@ export const siteConfig = {
     contact: {
         email: "connect@pantharinfohub.com",
         phone: "+91 6393957916",
-        address: "RISE Incubation, Nagar Nigam Premises, Elite Square, Civil Lines, Jhansi (UP) - 284001",
+        addresses: [
+            "RISE Incubation, Nagar Nigam Premises, Elite Square, Civil Lines, Jhansi (UP) - 284001",
+            "Block No 7, 1st Floor, Janki Tower, Kopri Gaon, Thane( East ) - 400603, Maharashtra, India"
+        ],
     },
 };
 
