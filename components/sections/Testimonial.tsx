@@ -1,34 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Sparkle } from "lucide-react";
 
 const testimonials = [
     {
         id: 1,
-        quote: "The attention to detail and creative vision transformed our brand identity completely.",
-        author: "Sneha",
-        role: "Creative Director",
+        quote: "Panthar Infohub delivered a robust and scalable solution that perfectly matched our service requirements. Their execution and support were excellent.",
         company: "Pankhuri",
-        image: "/user/Sneha.jpg",
     },
     {
         id: 2,
-        quote: "We are a team of passionate individuals who love what we do.",
-        author: "Abhay",
-        role: "CEO",
-        company: "Panthar Infohub Pvt. Ltd.",
-        image: "/user/Abhay.png",
+        quote: "Panthar Infohub provided a seamless experience from concept to delivery. Their professionalism and technical expertise truly stand out.",
+        company: "Sweet & Sour",
     },
     {
         id: 3,
-        quote: "As a frontend developer, I can say that Panthar Infohub Pvt. Ltd. is a great company to work with.",
-        author: "Pulkit",
-        role: "Frontend Developer",
-        company: "Panthar Infohub Pvt. Ltd.",
-        image: "/user/Pulkit.jpg",
+        quote: "From UI/UX design to final deployment, Panthar Infohub handled everything professionally. The service quality was consistently high.",
+        company: "Frame Finder",
+    },
+    {
+        id: 4,
+        quote: "Their end-to-end development services were smooth, efficient, and well-managed. We appreciated the clear communication at every stage.",
+        company: "Less Pay",
     },
 ];
 
@@ -110,29 +105,16 @@ export default function TestimonialsEditorial() {
                                     <Quote className="w-12 h-12 text-orange-500/20 mb-6" />
 
                                     {/* Quote Text */}
-                                    <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-gray-900 tracking-tight mb-8">
+                                    <blockquote className="text-2xl md:text-2xl font-normal leading-relaxed text-gray-900 tracking-tight mb-8">
                                         "{current.quote}"
                                     </blockquote>
 
                                     {/* Author Info */}
                                     <div className="flex items-center gap-4">
-                                        <motion.div
-                                            whileHover={{ scale: 1.05 }}
-                                            className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-orange-500/20 hover:ring-orange-500/40 transition-all duration-300"
-                                        >
-                                            <Image
-                                                src={current.image || "/placeholder.svg"}
-                                                alt={current.author}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </motion.div>
-                                        <div>
-                                            <p className="text-lg font-bold text-gray-900">{current.author}</p>
-                                            <p className="text-sm text-gray-400">
-                                                {current.role}
-                                                <span className="mx-2 text-orange-500">•</span>
-                                                <span className="text-gray-600">{current.company}</span>
+                                        <div className="h-10 w-1 bg-orange-500 rounded-full" />
+                                        <div className="flex flex-col">
+                                            <p className="text-lg font-bold text-gray-900 leading-tight">
+                                                {current.company}
                                             </p>
                                         </div>
                                     </div>
