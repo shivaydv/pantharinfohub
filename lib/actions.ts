@@ -19,9 +19,13 @@ export async function carrerApplicationForm(formData: FormData) {
 
         // Connect Email Service
         // Send email with the Drive link provided in fields.user_resume
-        await applicationMail(fields, fields.user_resume);
+        const mailSent = await applicationMail(fields, fields.user_resume);
 
-        return parseServerResponse({ status: 'SUCCESS', message: 'Application Submitted Successfully' })
+        if (mailSent) {
+            return parseServerResponse({ status: 'SUCCESS', message: 'Application Submitted Successfully' })
+        } else {
+            return parseServerResponse({ status: 'FAIL', message: 'Failed to submit application. Please try again later.' })
+        }
     } catch (error) {
         console.error('Submission failed:', error);
         return parseServerResponse({ status: 'FAIL', message: 'Unknown Error Occured' })
@@ -40,9 +44,13 @@ export async function contactFormAction(formData: FormData) {
 
         console.log("Contact Request received:", fields);
 
-        await contactMail(fields);
+        const mailSent = await contactMail(fields);
 
-        return parseServerResponse({ status: 'SUCCESS', message: 'Message Sent Successfully' })
+        if (mailSent) {
+            return parseServerResponse({ status: 'SUCCESS', message: 'Message Sent Successfully' })
+        } else {
+            return parseServerResponse({ status: 'FAIL', message: 'Failed to send message. Please try again later.' })
+        }
     } catch (error) {
         console.error('Contact submission failed:', error);
         return parseServerResponse({ status: 'FAIL', message: 'Unknown Error Occured' })
