@@ -11,7 +11,7 @@ const FooterLinks = [
     { label: "Our Team", href: "/team" },
     { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
-    {label:"Career", href:"/career"},
+    { label: "Career", href: "/career" },
 ]
 
 
@@ -101,6 +101,11 @@ const Footer = () => {
                                         <li key={i}>
                                             <Link
                                                 href={link.href}
+                                                onClick={() => {
+                                                    if (!link.href.includes("#")) {
+                                                        window.scrollTo(0, 0);
+                                                    }
+                                                }}
                                                 className="text-gray-400 hover:text-white transition-colors text-lg lg:text-xl font-cal-sans"
                                             >
                                                 {link.label}
