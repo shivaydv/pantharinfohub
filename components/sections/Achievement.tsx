@@ -13,20 +13,19 @@ const Achievement = () => {
     const inInView = useInView(Dref);
 
     const images: AchievementLogo[] = [
-        { src: "/ach/alpharule.png" },
-        { src: "/ach/citimaster.png" },
-        { src: "/ach/emify.png" },
-        { src: "/ach/frame-finder.png" },
-        { src: "/ach/giveat.png" },
-        { src: "/ach/google.png" },
-        { src: "/ach/gov.webp" },
-        { src: "/ach/kavach.png" },
-        { src: "/ach/lesspay.png" },
-        { src: "/ach/news18.png" },
-        { src: "/ach/pankhuri.png" },
-        { src: "/ach/rise.png" },
-        { src: "/ach/sweetnsour.png" },
-        { src: "/ach/velvet.png" },
+        { src: "/ach/alpharule.svg" },
+        { src: "/ach/citimaster.svg" },
+        { src: "/ach/emify.svg" },
+        { src: "/ach/giveat.svg" },
+        { src: "/ach/google.svg" },
+        { src: "/ach/gov.svg" },
+        { src: "/ach/kavach.svg" },
+        { src: "/ach/lesspay.svg" },
+        { src: "/ach/news18.svg" },
+        { src: "/ach/pankhuri.svg" },
+        { src: "/ach/rise.svg" },
+        { src: "/ach/sweetnsour.svg" },
+        { src: "/ach/velvet.svg" },
     ];
 
     let [ref, { width }] = useMeasure();
@@ -64,7 +63,7 @@ const Achievement = () => {
                     {[...images, ...images].map((image, i) => (
                         <div
                             key={i}
-                            className="relative shrink-0 w-44 h-44 md:w-40 md:h-40 flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer group"
+                            className="relative shrink-0 w-28 h-28 md:w-32 md:h-32 flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer group"
                         >
                             <div className="relative w-full h-full">
                                 <Image
@@ -72,8 +71,6 @@ const Achievement = () => {
                                     alt="Client Logo"
                                     className="object-contain filter transition-all duration-500"
                                     fill
-                                    // width={24}
-                                    // height={24}
                                 />
                             </div>
                         </div>
