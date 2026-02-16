@@ -32,15 +32,6 @@ const page = () => {
     window.scrollTo(0, 0);
 
     const criticalAssets = [
-      "/icons/figma 1.png",
-      "/icons/docker 1.png",
-      "/icons/kolin 1.png",
-      "/icons/android 1.png",
-      "/icons/Next.js 1.png",
-      "/icons/postgresql 1.png",
-      "/icons/Superbase 1.png",
-      "/icons/Express.js 1.png",
-      "/user/Abhay.png",
       "/black_logo.png",
       "/assets/showcase-video.mp4",
     ];
@@ -56,7 +47,7 @@ const page = () => {
       }
 
       const elapsed = Date.now() - preloadStartTime;
-      const minimumDisplayTime = 1800;
+      const minimumDisplayTime = 1200;
       const remainingTime = Math.max(0, minimumDisplayTime - elapsed);
 
       setTimeout(() => {
