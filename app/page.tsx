@@ -12,6 +12,8 @@ import AboutSection from "@/components/sections/AboutSection";
 import FounderSection from "@/components/sections/FounderSection";
 import ParallaxStrips from "@/components/sections/Strips";
 import CardSection from "@/components/sections/CardsSection";
+import TitlePage from "@/components/sections/TitlePage";
+import MainProjects from "@/components/sections/MainProjects";
 import Footer from "@/components/others/Footer";
 import TestimonialsEditorial from "@/components/sections/Testimonial";
 
@@ -101,8 +103,10 @@ const page = () => {
       <Achievement />
       <AboutSection />
       <FounderSection />
-      <TestimonialsEditorial />
       <ParallaxStrips />
+      <TitlePage />
+      <MainProjects />
+      <TestimonialsEditorial />
       <CardSection />
     </main>
   );

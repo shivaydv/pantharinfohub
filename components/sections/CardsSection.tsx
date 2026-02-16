@@ -4,7 +4,7 @@ import { useScroll, useTransform, motion, useSpring } from "motion/react";
 import { useRef } from "react";
 import FadedHeading from "../others/FadedHeading";
 
-import { projects } from "@/lib/data";
+import { projects as AllProjects } from "@/lib/data";
 
 export default function CardSection({ hideHeader = false }: { hideHeader?: boolean }) {
     const container = useRef(null);
@@ -18,6 +18,8 @@ export default function CardSection({ hideHeader = false }: { hideHeader?: boole
         damping: 30,
         restDelta: 0.001,
     });
+
+    const projects = AllProjects.slice(0, 5);
 
     return (
         <div ref={container} className="relative h-[700vh] bg-white pt-6 pb-0 md:pt-16 md:pb-0">
@@ -44,7 +46,7 @@ export default function CardSection({ hideHeader = false }: { hideHeader?: boole
                 <div className="relative w-full h-full flex items-center justify-center z-10">
                     {projects.map((project, i) => (
                         <Card
-                            key={project.id}
+                            key={i}
                             project={project}
                             progress={smoothProgress}
                             index={i}

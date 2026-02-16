@@ -77,9 +77,9 @@ export default function FounderSection() {
                                 <h2 className="text-4xl lg:text-5xl font-bold text-orange-500 mb-8 font-cal-sans tracking-tight leading-tight">The Founder</h2>
                                 <p className="text-gray-600 text-lg lg:text-xl leading-relaxed font-light">
                                     Abhay Namdev is an Indian tech entrepreneur and startup founder known for leading Panthar
-Infohub, a software development company based in Thane, Maharashtra. He has been
-recognized for his leadership in building early-stage tech products and driving innovation in
-areas such as emergency response and personal safety applications.
+                                    Infohub, a software development company based in Thane, Maharashtra. He has been
+                                    recognized for his leadership in building early-stage tech products and driving innovation in
+                                    areas such as emergency response and personal safety applications.
 
                                 </p>
                             </motion.div>

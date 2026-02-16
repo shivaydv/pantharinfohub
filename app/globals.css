@@ -141,3 +141,113 @@
     cursor: pointer;
   }
 }
+
+/* css from old site  */
+
+@layer utilities {
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    /* size of each square */
+    background-position: center bottom;
+  }
+
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .section_container {
+    @apply w-full max-w-[95%] mx-auto;
+  }
+
+  .home_container {
+    @apply md:py-5 w-[92%] m-auto;
+  }
+
+  /* navbar */
+  .header {
+    @apply px-2 py-2 shadow-sm rounded-2xl;
+  }
+
+  .contact-btn {
+    @apply rounded-full;
+  }
+
+  /* ================== HOME DIV ===================== */
+
+  .title_heading {
+    @apply text-5xl sm:text-[6.25rem] font-medium leading-[130%] relative tracking-tight;
+  }
+
+  .heading_xl {
+    @apply text-lg sm:text-xl;
+  }
+
+  .hero_heading {
+    @apply text-[4rem] sm:text-[9rem] font-medium leading-[130%] tracking-tight;
+  }
+
+  .circle_hover {
+    @apply relative transition-all delay-150;
+  }
+
+  .hero_circle {
+    @apply w-20 aspect-square sm:w-28 sm:h-28 rounded-full;
+  }
+
+  .subheader {
+    @apply text-3xl font-medium leading-[130%];
+  }
+
+  .h2_heading {
+    @apply text-4xl font-medium leading-[130%];
+  }
+
+  .project_text {
+    inset: 100% 0% auto;
+  }
+
+  .project_div_1 {
+    inset: 0%;
+  }
+
+  .project_div_2 {
+    left: 0%;
+    right: 0%;
+  }
+
+  .project_div_3 {
+    inset: auto 0% 0%;
+  }
+
+  .heading {
+    @apply text-6xl sm:text-[6.25rem] font-medium leading-[130%] relative tracking-tight;
+  }
+
+
+  .small_heading {
+    @apply font-medium text-[1.5rem] md:text-5xl leading-[110%] break-words;
+  }
+
+
+  .circle {
+    @apply w-9 h-9 sm:w-10 sm:h-10 rounded-full;
+  }
+
+  .service_card {
+    @apply rounded-3xl border flex py-14 relative items-center flex-col overflow-hidden justify-start;
+  }
+
+  .service_pic_card {
+    @apply border border-white w-[10rem] shadow-md bg-white rounded-3xl;
+  }
+
+}
