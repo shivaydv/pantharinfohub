@@ -124,7 +124,7 @@ const Footer = () => {
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 0.1, y: 0 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
-                        className="text-[25vw] sm:text-[22vw] font-black font-cal-sans text-white leading-none translate-y-[10%] lg:translate-y-[20%] whitespace-nowrap"
+                        className="text-[22vw]  sm:text-[20vw] font-black font-cal-sans text-white leading-none translate-y-[10%] lg:translate-y-[20%] whitespace-nowrap"
                     >
                         PANTHAR
                     </motion.h2>

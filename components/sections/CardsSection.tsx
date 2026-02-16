@@ -123,11 +123,11 @@ const Card = ({ project, progress, index, total, onCardClick }: { project: any; 
                 willChange: "transform, opacity",
                 zIndex: index,
             }}
-            className="absolute inset-0 flex items-center justify-center p-4 md:p-8 "
+            className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
         >
             <div
                 onClick={onCardClick}
-                className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] bg-[#0a0a0a] group cursor-pointer border border-white/5"
+                className={`relative w-auto max-w-full md:max-w-7xl ${project.mobileImage ? "aspect-[3/4] h-[65vh] md:aspect-video md:h-[85vh]" : "aspect-video h-auto md:h-[85vh]"} overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] bg-[#0a0a0a] group cursor-pointer border border-white/5 transition-all duration-500`}
             >
                 <div className="absolute inset-0 transition-transform duration-700 ">
                     {/* Mobile Image */}
