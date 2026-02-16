@@ -6,10 +6,18 @@ import { useRef } from "react";
 const TitlePage = () => {
     const ref = useRef();
     const animateRef = useRef();
+    const sectionRef = useRef();
     const inInView = useInView(ref)
 
     const { scrollYProgress } = useScroll({ target: animateRef, offset: ["start end", "0 0.6"] })
     const clipPath = useTransform(scrollYProgress, [0, 1], ["inset(50%)", "inset(0%)"])
+
+    // Additional scroll tracker for the entire section
+    const { scrollYProgress: sectionProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] })
+    const headingY = useTransform(sectionProgress, [0, 0.5, 1], [50, 0, -25]);
+    const headingOpacity = useTransform(sectionProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0.6]);
+    const circlesY = useTransform(sectionProgress, [0, 0.5, 1], [40, 0, -15]);
+    const circlesOpacity = useTransform(sectionProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.7]);
     const variants = {
         initial: {
             opacity: "0",
@@ -26,9 +34,9 @@ const TitlePage = () => {
         }),
     }
     return (
-        <section className="section_container mt-16 pt-[8vh] pb-[9rem] " >
+        <section className="section_container mt-16 pt-[8vh] pb-[9rem] " ref={sectionRef}>
             <div className="relative" >
-                <div className="pb-5" >
+                <motion.div className="pb-5" style={{ y: headingY, opacity: headingOpacity }}>
                     <div className="flex gap-4 overflow-hidden flex-col sm:flex-row " >
                         <motion.div variants={variants} style={{ transformOrigin: "bottom center" }} initial="initial" whileInView="animate" className="overflow-hidden" >
                             <h2 className="title_heading" > Transforming </h2>
@@ -43,10 +51,10 @@ const TitlePage = () => {
                             <h2 className="title_heading" > into simplicity </h2>
                         </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
 
-                <div className="flex sm:justify-between sm:items-center flex-col gap-y-12 sm:flex-row" >
+                <motion.div className="flex sm:justify-between sm:items-center flex-col gap-y-12 sm:flex-row" style={{ y: circlesY, opacity: circlesOpacity }}>
                     <div className="flex" >
                         <div className="hero_circle bg-gray-400 flex-center" >
                             <div className="flex items-center justify-center flex-col" >
@@ -82,11 +90,12 @@ const TitlePage = () => {
                             </motion.div>
                         </motion.div>
                     </div>
+                </motion.div>
 
-                </div>
             </div>
         </section>
     )
 }
 
 export default TitlePage
+

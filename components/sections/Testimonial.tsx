@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Sparkle } from "lucide-react";
 
 const testimonials = [
@@ -29,6 +29,23 @@ const testimonials = [
 
 export default function TestimonialsEditorial() {
     const [active, setActive] = useState(0);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    // Scroll-driven parallax for different elements
+    const headerY = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -30]);
+    const headerOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0.5]);
+
+    const contentY = useTransform(scrollYProgress, [0, 0.5, 1], [80, 0, -20]);
+    const contentOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.6]);
+    const contentScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.96, 1, 1, 0.98]);
+
+    const navY = useTransform(scrollYProgress, [0, 0.5, 1], [40, 0, -10]);
+    const navOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0.7]);
 
     const handleChange = (index: number) => {
         if (index === active) return;
@@ -48,17 +65,14 @@ export default function TestimonialsEditorial() {
     const current = testimonials[active];
 
     return (
-        <section className="relative py-20 sm:py-28 lg:py-36 px-6 bg-white overflow-hidden">
+        <section className="relative py-20 sm:py-28 lg:py-36 px-6 bg-white overflow-hidden" ref={sectionRef}>
             {/* Background texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[24px_24px]" />
 
             <div className="max-w-[1400px] mx-auto">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    style={{ y: headerY, opacity: headerOpacity }}
                     className="text-center mb-16"
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
@@ -73,7 +87,7 @@ export default function TestimonialsEditorial() {
                 </motion.div>
 
                 {/* Testimonial Content */}
-                <div className="max-w-5xl mx-auto">
+                <motion.div className="max-w-5xl mx-auto" style={{ y: contentY, opacity: contentOpacity, scale: contentScale }}>
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                         {/* Large Index Number */}
                         <motion.div
@@ -125,10 +139,7 @@ export default function TestimonialsEditorial() {
 
                     {/* Navigation */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        style={{ y: navY, opacity: navOpacity }}
                         className="mt-16 flex items-center justify-between border-t border-gray-100 pt-8"
                     >
                         {/* Progress Indicators */}
@@ -174,7 +185,7 @@ export default function TestimonialsEditorial() {
                             </motion.button>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

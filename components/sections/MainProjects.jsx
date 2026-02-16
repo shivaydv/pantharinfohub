@@ -26,19 +26,27 @@ const MainProjects = () => {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
   const y = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
 
+  // Scroll-driven transforms for subheader text
+  const textY = useTransform(scrollYProgress, [0, 0.4, 1], [60, 0, -20]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.15, 0.8, 1], [0, 1, 1, 0.6]);
+
+  // Scroll-driven transforms for cards column
+  const cardsX = useTransform(scrollYProgress, [0, 0.3, 1], [-30, 0, 0]);
+  const cardsOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.7]);
+
   return (
     <section className='bg-gray-100 rounded-3xl overflow-hidden' >
       <motion.div className="section_container pt-[8rem] sm:pt-[12rem] relative" ref={ref} >
 
         <div className="py-6 relative" >
-          <div>
+          <motion.div style={{ y: textY, opacity: textOpacity }}>
             <div>
               <h2 className='subheader' > Turning data into real </h2>
             </div>
             <div>
               <h2 className='subheader' >  action and ideas</h2>
             </div>
-          </div>
+          </motion.div>
 
           {/* MOCK UP PIC MOBILE */}
           <motion.div style={{ y }} className={` w-[12rem] sm:w-[20rem] mx-auto aspect-[22.5/46.8] absolute top-[19%] left-[6%] right-auto sm:inset-x-0  rounded-3xl z-[100]`} >
@@ -49,14 +57,14 @@ const MainProjects = () => {
             <Image src="/service/ipadmockup.png" fill className="w-full h-full" alt="mockup" quality={100} />
           </motion.div>
 
-          <div className=' w-full sm:w-[25rem] flex flex-col gap-8 pt-[90vh] sm:pt-20' >
+          <motion.div className=' w-full sm:w-[25rem] flex flex-col gap-8 pt-[90vh] sm:pt-20' style={{ x: cardsX, opacity: cardsOpacity }}>
             {mainProjects?.slice(0, 3)?.map((project, i) => {
               return (
                 < Card key={i} i={i} project={project} />
               )
             })}
 
-          </div>
+          </motion.div>
         </div>
 
         {/* PANTHAR TEXT */}

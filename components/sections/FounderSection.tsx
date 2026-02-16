@@ -2,8 +2,9 @@
 
 import { Twitter, Instagram, Linkedin } from "lucide-react";
 import FadedHeading from "../others/FadedHeading";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { Abhay } from "@/lib/data";
+import { useRef } from "react";
 
 const experience = [
     { position: "Youngest CEO Recognition", period: "2021" },
@@ -11,13 +12,28 @@ const experience = [
 ];
 
 export default function FounderSection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    // Image parallax - moves slower, creates depth
+    const imageY = useTransform(scrollYProgress, [0, 1], [80, -50]);
+    const imageOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0.5]);
+
+    // Info text parallax - slightly different rate for depth feel
+    const infoY = useTransform(scrollYProgress, [0, 1], [50, -30]);
+    const infoOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.6]);
+
     return (
-        <section className="w-full py-20 px-6 bg-white overflow-hidden">
+        <section className="w-full py-20 px-6 bg-white overflow-hidden" ref={sectionRef}>
             <div className="max-w-7xl mx-auto">
                 <FadedHeading title="Meet Abhay" overlapClass="mt-4 md:-mt-8 lg:-mt-12">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                         {/* Left Side - Founder Image Card */}
-                        <div className="relative flex justify-center items-center">
+                        <motion.div className="relative flex justify-center items-center" style={{ y: imageY, opacity: imageOpacity }}>
                             <motion.div
                                 initial={{ opacity: 0, y: 40, scale: 0.98 }}
                                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -64,10 +80,10 @@ export default function FounderSection() {
                                     </motion.a>
                                 </div>
                             </motion.div>
-                        </div>
+                        </motion.div>
 
                         {/* Right Side - Founder Info */}
-                        <div className="space-y-8 lg:pl-8">
+                        <motion.div className="space-y-8 lg:pl-8" style={{ y: infoY, opacity: infoOpacity }}>
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +118,7 @@ export default function FounderSection() {
                                     </div>
                                 ))}
                             </motion.div>
-                        </div>
+                        </motion.div>
                     </div>
                 </FadedHeading>
             </div>

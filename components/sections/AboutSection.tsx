@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView, animate } from "motion/react";
+import { motion, useInView, animate, useScroll, useTransform } from "motion/react";
 import { TimelineContent } from "../motion/TimelineAnimation";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -43,6 +43,20 @@ export default function AboutSection() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(sectionRef, { amount: 0.2, once: true });
 
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    // Scroll-driven parallax for left column (content rises as you scroll)
+    const leftY = useTransform(scrollYProgress, [0, 0.5, 1], [80, 0, -40]);
+    const leftOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.6]);
+
+    // Scroll-driven parallax for right column (counter movement for depth)
+    const rightY = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
+    const rightScale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.9, 1, 1, 0.95]);
+    const rightOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0.5]);
+
     const revealVariants = {
         visible: (i: number) => ({
             y: 0,
@@ -77,7 +91,7 @@ export default function AboutSection() {
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
                     {/* Left Column: Vision & Heading */}
-                    <div className="lg:col-span-7 flex flex-col relative z-10">
+                    <motion.div className="lg:col-span-7 flex flex-col relative z-10" style={{ y: leftY, opacity: leftOpacity }}>
                         <TimelineContent
                             as="div"
                             animationNum={0}
@@ -148,10 +162,10 @@ export default function AboutSection() {
                                 </div>
                             </Link>
                         </TimelineContent>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column: Orbiting Brand Experience (No Card) */}
-                    <div className="lg:col-span-5 h-[400px] lg:h-[550px] relative flex items-center justify-center">
+                    <motion.div className="lg:col-span-5 h-[400px] lg:h-[550px] relative flex items-center justify-center" style={{ y: rightY, scale: rightScale, opacity: rightOpacity }}>
                         <div className="relative w-full h-full flex items-center justify-center">
 
                             {/* Central Aura */}
@@ -299,7 +313,7 @@ export default function AboutSection() {
                                 </div>
                             </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

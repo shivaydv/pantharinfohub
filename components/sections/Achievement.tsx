@@ -1,5 +1,5 @@
 "use client"
-import { animate, motion, useInView, useMotionValue } from "framer-motion";
+import { animate, motion, useInView, useMotionValue, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import useMeasure from "react-use-measure";
@@ -10,7 +10,16 @@ interface AchievementLogo {
 
 const Achievement = () => {
     const Dref = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const inInView = useInView(Dref);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    const sectionY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+    const sectionOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.3, 1, 1, 0.3]);
 
     const images: AchievementLogo[] = [
         { src: "/ach/alpharule.svg" },
@@ -48,7 +57,12 @@ const Achievement = () => {
     }, [xTranslation, width]);
 
     return (
-        <section className="py-12 bg-white/50 backdrop-blur-sm overflow-hidden" id="achievements">
+        <motion.section
+            className="py-12 bg-white/50 backdrop-blur-sm overflow-hidden"
+            id="achievements"
+            ref={sectionRef}
+            style={{ y: sectionY, opacity: sectionOpacity }}
+        >
 
             <div className="relative flex overflow-hidden py-4" ref={Dref}>
                 {/* Fade effect on sides */}
@@ -77,7 +91,7 @@ const Achievement = () => {
                     ))}
                 </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 }
 
