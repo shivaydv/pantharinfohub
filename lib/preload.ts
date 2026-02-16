@@ -20,8 +20,9 @@ export const preloadVideo = (src: string): Promise<void> => {
             console.warn(`Failed to preload video: ${src}`);
             resolve();
         };
-        // For videos, we might want a timeout as they can be large
-        setTimeout(resolve, 3000);
+        video.load(); // Trigger loading immediately
+        // Shorter timeout — video continues loading in background after preloader exits
+        setTimeout(resolve, 1500);
     });
 };
 

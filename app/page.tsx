@@ -56,16 +56,19 @@ const page = () => {
       }
 
       const elapsed = Date.now() - preloadStartTime;
-      const minimumDisplayTime = 2500; // Increased slightly for smoother experience
+      const minimumDisplayTime = 1800;
       const remainingTime = Math.max(0, minimumDisplayTime - elapsed);
 
       setTimeout(() => {
         setIsLoading(false);
-        // Wait for Preloader exit animation (0.8s in Preloader.tsx)
-        setTimeout(() => {
-          setStartMainContent(true);
-          setCanStartAnimations(true);
-        }, 500);
+        // Use rAF for smoother handoff — lets browser paint the exit animation
+        // before triggering main content animations
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setStartMainContent(true);
+            setCanStartAnimations(true);
+          });
+        });
       }, remainingTime);
     };
 
@@ -73,7 +76,7 @@ const page = () => {
       handleLoad();
     } else {
       window.addEventListener("load", handleLoad);
-      const fallback = setTimeout(handleLoad, 6000); // Slightly longer fallback
+      const fallback = setTimeout(handleLoad, 4000);
       return () => {
         window.removeEventListener("load", handleLoad);
         clearTimeout(fallback);

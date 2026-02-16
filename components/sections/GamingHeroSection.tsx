@@ -50,7 +50,7 @@ const FloatingAsset = ({ src, alt, className, delay, startAnimation, mouseX, mou
             } : {}}
             transition={{
                 delay: delay,
-                duration: 0.8,
+                duration: 0.6,
                 ease: [0.16, 1, 0.3, 1],
             }}
             style={{
@@ -66,7 +66,7 @@ const FloatingAsset = ({ src, alt, className, delay, startAnimation, mouseX, mou
             <motion.div
                 className="relative w-full h-full"
                 animate={{
-                    y: [0, -10, 0], // Increased bobbing as well
+                    y: [0, -6, 0],
                 }}
                 transition={{
                     duration: 4 + Math.random() * 2,
@@ -81,7 +81,7 @@ const FloatingAsset = ({ src, alt, className, delay, startAnimation, mouseX, mou
                 <div
                     className="relative w-full h-full"
                     style={{
-                        transform: "translateZ(50px)", // More pronounced depth
+                        transform: "translateZ(20px)",
                     }}
                 >
                     <Image
@@ -89,7 +89,6 @@ const FloatingAsset = ({ src, alt, className, delay, startAnimation, mouseX, mou
                         alt={alt}
                         fill
                         className="object-contain"
-                        priority
                     />
                 </div>
             </motion.div>
@@ -196,7 +195,7 @@ const GamingHeroSection = ({ startAnimation = true }: { startAnimation?: boolean
                         {...asset}
                         mouseX={mouseX}
                         mouseY={mouseY}
-                        delay={0.8 + i * 0.12} // Sequential flow
+                        delay={0.5 + i * 0.06}
                         startAnimation={startAnimation}
                     />
                 ))}
