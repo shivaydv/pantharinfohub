@@ -36,7 +36,7 @@ const MainProjects = () => {
 
   return (
     <section className='bg-gray-100 rounded-3xl overflow-hidden' >
-      <motion.div className="section_container pt-[8rem] sm:pt-[12rem] relative" ref={ref} >
+      <motion.div className="section_container pt-[8rem] lg:pt-[12rem] relative" ref={ref} >
 
         <div className="py-6 relative" >
           <motion.div style={{ y: textY, opacity: textOpacity }}>
@@ -49,15 +49,15 @@ const MainProjects = () => {
           </motion.div>
 
           {/* MOCK UP PIC MOBILE */}
-          <motion.div style={{ y }} className={` w-[12rem] sm:w-[20rem] mx-auto aspect-[22.5/46.8] absolute top-[19%] left-[6%] right-auto sm:inset-x-0  rounded-3xl z-[100]`} >
+          <motion.div style={{ y }} className={` w-[12rem] md:w-[16rem] lg:w-[20rem] mx-auto aspect-[22.5/46.8] absolute top-[19%] left-[6%] right-auto lg:inset-x-0  rounded-3xl z-[100]`} >
             <Image src="/service/home.png" fill className="w-full h-full" alt="mockup" quality={100} />
           </motion.div>
 
-          <motion.div className={` w-[30rem] top-[15%] -right-1/2 sm:w-[50rem] aspect-[6.2/4.7] absolute sm:top-[4%] sm:right-[-10%] bottom-auto left-auto rounded-3xl z-50`} >
+          <motion.div className={` w-[30rem] top-[15%] -right-1/2 lg:w-[50rem] aspect-[6.2/4.7] absolute lg:top-[4%] md:right-[-10%] bottom-auto left-auto rounded-3xl z-50`} >
             <Image src="/service/ipadmockup.png" fill className="w-full h-full" alt="mockup" quality={100} />
           </motion.div>
 
-          <motion.div className=' w-full sm:w-[25rem] flex flex-col gap-8 pt-[90vh] sm:pt-20' style={{ x: cardsX, opacity: cardsOpacity }}>
+          <motion.div className=' w-full lg:w-[25rem] flex flex-col gap-8 pt-[90vh] lg:pt-20' style={{ x: cardsX, opacity: cardsOpacity }}>
             {mainProjects?.slice(0, 3)?.map((project, i) => {
               return (
                 < Card key={i} i={i} project={project} />
@@ -77,7 +77,7 @@ const MainProjects = () => {
             }}
           />
           <div className="z-50 flex" >
-            <motion.div variants={variants} style={{ transformOrigin: "bottom center" }} initial="initial" whileInView="animate" className="text-orange-500 text-[4.5rem] sm:text-[22rem] font-bold leading-[100%]" > Panthar </motion.div>
+            <motion.div variants={variants} style={{ transformOrigin: "bottom center" }} initial="initial" whileInView="animate" className="text-orange-500 text-[4.2rem] md:text-[12rem] lg:text-[22rem] font-bold leading-[100%]" > Panthar </motion.div>
           </div>
         </div>
       </motion.div>
