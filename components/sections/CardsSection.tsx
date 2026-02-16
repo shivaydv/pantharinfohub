@@ -15,7 +15,7 @@ export default function CardSection({ hideHeader = false }: { hideHeader?: boole
     });
 
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 60,
+        stiffness: 100, // Increased for better responsiveness
         damping: 30,
         restDelta: 0.001,
     });
@@ -87,13 +87,13 @@ const Card = ({ project, progress, index, total, onCardClick }: { project: any; 
     const y = useTransform(
         progress,
         [entryStart, entryEnd],
-        [isFirst ? 0 : 1200, 0]
+        [isFirst ? 0 : 1000, 0] // Reduced initial offset slightly
     );
 
     const scale = useTransform(
         progress,
         [exitStart, exitEnd],
-        [1, isLast ? 1 : 0.85]
+        [1, isLast ? 1 : 0.88] // Slightly less dramatic scale for smoothness
     );
 
     const opacity = useTransform(
@@ -102,10 +102,11 @@ const Card = ({ project, progress, index, total, onCardClick }: { project: any; 
         [1, isLast ? 1 : 0]
     );
 
-    const rotateX = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : 15]);
-    const rotateZ = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : -3]);
-    const z = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : -200]);
-    const blur = useTransform(progress, [exitStart, exitEnd], ["blur(0px)", isLast ? "blur(0px)" : "blur(5px)"]);
+    const rotateX = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : 10]); // Reduced rotation
+    const rotateZ = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : -2]); // Reduced rotation
+    const z = useTransform(progress, [exitStart, exitEnd], [0, isLast ? 0 : -100]); // Reduced z depth offset
+
+    // Removed blur transform for significant performance boost
 
     return (
         <motion.div
@@ -116,37 +117,56 @@ const Card = ({ project, progress, index, total, onCardClick }: { project: any; 
                 rotateX,
                 rotateZ,
                 z,
-                filter: blur,
                 perspective: 1200,
                 transformStyle: "preserve-3d",
                 transformOrigin: "center center",
                 willChange: "transform, opacity",
                 zIndex: index,
             }}
-            className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
+            className="absolute inset-0 flex items-center justify-center p-4 md:p-8 "
         >
             <div
                 onClick={onCardClick}
-                className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.18)] bg-[#0a0a0a] group cursor-pointer transition-transform duration-500 "
+                className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] bg-[#0a0a0a] group cursor-pointer border border-white/5"
             >
-                <div className="absolute inset-0">
-                    {/* Mobile Image - shown on small screens */}
+                <div className="absolute inset-0 transition-transform duration-700 ">
+                    {/* Mobile Image */}
                     {project.mobileImage && (
                         <Image
                             src={project.mobileImage}
                             alt={project.title}
                             fill
-                            className="object-cover transition-transform duration-700 block md:hidden"
+                            className="object-cover block md:hidden"
+                            sizes="(max-width: 768px) 100vw, 80vw"
                         />
                     )}
-                    {/* Desktop Image - shown on medium+ screens (or as fallback if no mobileImage) */}
+                    {/* Desktop Image */}
                     <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className={`object-cover transition-transform duration-700 ${project.mobileImage ? "hidden md:block" : "block"}`}
+                        className={`object-cover ${project.mobileImage ? "hidden md:block" : "block"}`}
+                        sizes="100vw"
+                        priority={index < 2}
                     />
-                    <div className="absolute inset-0 bg-black/10  transition-colors duration-500" />
+
+                    {/* Depth Overlays */}
+                    {/* 1. Subtle Vignette for depth */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+
+                    {/* 2. Shine/Reflection effect */}
+                    <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-white/10 opacity-50" />
+
+                    {/* 3. Dark Bottom Gradient for Text contrast (if any) and depth */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-80" />
+
+                    {/* Inner Rim Light */}
+                    <div className="absolute inset-0 rounded-[2.5rem] md:rounded-[3.5rem] border border-white/10 pointer-events-none" />
+                </div>
+
+                {/* Optional: Title reveal on hover to add to the "on top of screen" feel */}
+                <div className="absolute bottom-10 left-10 z-20   text-white font-cal-sans text-2xl md:text-4xl hidden md:block">
+                    {project.title}
                 </div>
             </div>
         </motion.div>
