@@ -17,13 +17,13 @@ const Achievement = () => {
         { src: "/ach/citimaster.svg" },
         { src: "/ach/emify.svg" },
         { src: "/ach/giveat.svg" },
-        { src: "/ach/google.svg" },
-        { src: "/ach/gov.svg" },
+        { src: "/ach/image2.webp" },
+        { src: "/ach/image1.png" },
         { src: "/ach/kavach.svg" },
         { src: "/ach/lesspay.svg" },
         { src: "/ach/news18.svg" },
         { src: "/ach/pankhuri.svg" },
-        { src: "/ach/rise.svg" },
+        { src: "/ach/image3.png" },
         { src: "/ach/sweetnsour.svg" },
         { src: "/ach/velvet.svg" },
     ];
@@ -38,7 +38,7 @@ const Achievement = () => {
 
         const controls = animate(xTranslation, [0, finalPosition], {
             ease: 'linear',
-            duration: 35, // Slower, more elegant scroll
+            duration: 20, // Slower, more elegant scroll
             repeat: Infinity,
             repeatType: 'loop',
             repeatDelay: 0,
@@ -63,7 +63,7 @@ const Achievement = () => {
                     {[...images, ...images].map((image, i) => (
                         <div
                             key={i}
-                            className="relative shrink-0 w-28 h-28 md:w-32 md:h-32 flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out cursor-pointer group"
+                            className="relative shrink-0 w-32 h-32 md:w-32 md:h-32 flex justify-center items-center   opacity-100 transition-all duration-500 ease-in-out  group"
                         >
                             <div className="relative w-full h-full">
                                 <Image

@@ -10,12 +10,14 @@ import {
 import { ArrowUpRight, Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '@/lib/data';
+import ProjectModal from '../ui/ProjectModal';
 
 /* ---------- Component ---------- */
 
 export default function ProjectsList() {
     const [activeId, setActiveId] = useState<string | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [modalProject, setModalProject] = useState<(typeof projects)[number] | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const mouseX = useMotionValue(0);
@@ -66,6 +68,7 @@ export default function ProjectsList() {
                             setActiveId={setActiveId}
                             isMobile={isMobile}
                             isAnyActive={activeId !== null}
+                            onOpenModal={() => setModalProject(project)}
                         />
                     ))}
                 </div>
@@ -105,6 +108,13 @@ export default function ProjectsList() {
                     </AnimatePresence>
                 </motion.div>
             )}
+
+            {/* Reusable Project Modal */}
+            <ProjectModal
+                project={modalProject}
+                isOpen={!!modalProject}
+                onClose={() => setModalProject(null)}
+            />
         </div>
     );
 }
@@ -116,6 +126,7 @@ function ProjectRow({
     setActiveId,
     isMobile,
     isAnyActive,
+    onOpenModal,
 }: {
     data: any;
     index: number;
@@ -123,6 +134,7 @@ function ProjectRow({
     setActiveId: (id: string | null) => void;
     isMobile: boolean;
     isAnyActive: boolean;
+    onOpenModal: () => void;
 }) {
     const isDimmed = isAnyActive && !isActive;
 
@@ -135,8 +147,14 @@ function ProjectRow({
             transition={{ duration: 0.4 }}
             onMouseEnter={() => !isMobile && setActiveId(data.id)}
             onMouseLeave={() => !isMobile && setActiveId(null)}
-            onClick={() => isMobile && setActiveId(isActive ? null : data.id)}
-            className="group relative border-b border-slate-100 w-full"
+            onClick={() => {
+                if (isMobile) {
+                    setActiveId(isActive ? null : data.id);
+                } else {
+                    onOpenModal();
+                }
+            }}
+            className="group relative border-b border-slate-100 w-full cursor-pointer"
         >
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between py-6 sm:py-8 md:py-14 lg:py-16 gap-4 sm:gap-6 transition-all duration-300">
 
@@ -173,7 +191,9 @@ function ProjectRow({
                         </div>
 
                         {/* Desktop and Tablet Arrow */}
-                        <div className="hidden md:flex size-10 sm:size-12 lg:size-14 rounded-full border border-slate-200 items-center justify-center text-slate-400 group-hover:text-orange-500 group-hover:border-orange-500 transition-all duration-500">
+                        <div
+                            className="hidden md:flex size-10 sm:size-12 lg:size-14 rounded-full border border-slate-200 items-center justify-center text-slate-400 group-hover:text-orange-500 group-hover:border-orange-500 transition-all duration-500"
+                        >
                             <ArrowUpRight className="size-5 sm:size-6" strokeWidth={1.5} />
                         </div>
                     </div>
@@ -201,7 +221,10 @@ function ProjectRow({
                             <p className="mt-6 sm:mt-8 text-slate-500 text-xs sm:text-sm leading-relaxed max-w-xl">
                                 {data.description}
                             </p>
-                            <button className="mt-6 sm:mt-8 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-orange-500 flex items-center gap-2 sm:gap-3 active:scale-95 transition-all">
+                            <button
+                                onClick={(e) => { e.stopPropagation(); onOpenModal(); }}
+                                className="mt-6 sm:mt-8 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-orange-500 flex items-center gap-2 sm:gap-3 active:scale-95 transition-all"
+                            >
                                 Learn More <ArrowUpRight size={14} />
                             </button>
                         </div>

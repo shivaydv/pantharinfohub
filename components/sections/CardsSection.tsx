@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useScroll, useTransform, motion, useSpring } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FadedHeading from "../others/FadedHeading";
+import ProjectModal from "../ui/ProjectModal";
 
 import { projects as AllProjects } from "@/lib/data";
 
@@ -20,6 +21,8 @@ export default function CardSection({ hideHeader = false }: { hideHeader?: boole
     });
 
     const projects = AllProjects.slice(0, 5);
+
+    const [selectedProject, setSelectedProject] = useState<(typeof AllProjects)[number] | null>(null);
 
     return (
         <div ref={container} className="relative h-[700vh] bg-white pt-6 pb-0 md:pt-16 md:pb-0">
@@ -51,15 +54,23 @@ export default function CardSection({ hideHeader = false }: { hideHeader?: boole
                             progress={smoothProgress}
                             index={i}
                             total={projects.length}
+                            onCardClick={() => setSelectedProject(project)}
                         />
                     ))}
                 </div>
             </div>
+
+            {/* Reusable Project Modal */}
+            <ProjectModal
+                project={selectedProject}
+                isOpen={!!selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
         </div>
     );
 }
 
-const Card = ({ project, progress, index, total }: { project: any; progress: any; index: number; total: number }) => {
+const Card = ({ project, progress, index, total, onCardClick }: { project: any; progress: any; index: number; total: number; onCardClick: () => void }) => {
     const isFirst = index === 0;
     const isLast = index === total - 1;
 
@@ -114,22 +125,30 @@ const Card = ({ project, progress, index, total }: { project: any; progress: any
             }}
             className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
         >
-            <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div
+                onClick={onCardClick}
                 className="relative w-full max-w-7xl h-[70vh] md:h-[85vh] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.18)] bg-[#0a0a0a] group cursor-pointer transition-transform duration-500 "
             >
                 <div className="absolute inset-0">
+                    {/* Mobile Image - shown on small screens */}
+                    {project.mobileImage && (
+                        <Image
+                            src={project.mobileImage}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-700 block md:hidden"
+                        />
+                    )}
+                    {/* Desktop Image - shown on medium+ screens (or as fallback if no mobileImage) */}
                     <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-700 "
+                        className={`object-cover transition-transform duration-700 ${project.mobileImage ? "hidden md:block" : "block"}`}
                     />
                     <div className="absolute inset-0 bg-black/10  transition-colors duration-500" />
                 </div>
-            </a>
+            </div>
         </motion.div>
     );
 };
